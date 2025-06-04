@@ -1,0 +1,15 @@
+<div class="hfw-panel-nav-container rounded-2">
+  <div class="hfw-panel-nav-content">
+    <ng-content />
+  </div>
+  <div class="hfw-panel-nav-item-left">
+      <span *ngIf="!hideBtns" class="element-left-2" [ngClass]="disableAnimation ? 'hfw-panel-nav-btn-left-no-animation' : 'hfw-panel-nav-btn-left'"
+        (click)="onClickBtnLeft($event)">
+      </span>
+  </div>
+  <div class="hfw-panel-nav-item-right">
+      <span *ngIf="!hideBtns" class="element-right-2" [ngClass]="disableAnimation ? 'hfw-panel-nav-btn-right-no-animation' : 'hfw-panel-nav-btn-right'"
+        (click)="onClickBtnRight($event)">
+      </span>
+  </div>
+</div>

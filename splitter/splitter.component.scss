@@ -1,0 +1,130 @@
+@import "../../../../essentials-theme/src/styles/variables";
+@import "../../../../essentials-theme/src/styles/hfw-utilities";
+
+// @include media-breakpoint-down(sm) {
+//   .hfw-splitter-mobile {
+//     overflow-x: auto;
+//     flex-direction: column;
+//   }
+
+//   .hfw-splitter-bar-mobile {
+//     display: none;
+//   }
+// }
+
+.hfw-splitter-bar {
+  flex: 0 0 $splitter-size-element;
+}
+
+.hfw-splitter-dragbar {
+  background-color: $splitter-dragbar-background;
+  flex: auto;
+  position: relative;
+  z-index: 100;
+}
+
+.hfw-splitter-dragbar-button {
+  background-color: $element-ui-2;
+  border: none;
+  border-radius: 3px;
+  flex: 0 0 $splitter-size-medium;
+
+  &:hover {
+    background-color: $element-ui-0-hover;
+  }
+
+  &:hover > .hfw-splitter-dragbar-button-circle {
+    background-color: $element-ui-3;
+  }
+}
+
+.hfw-splitter-dragbar-button-circle {
+  height: 2px;
+  width: 2px;
+}
+
+.hfw-vertical-split-bar {
+  @extend .hfw-flex-container-column;
+}
+
+.hfw-horizontal-split-bar {
+  @extend .hfw-flex-container-row;
+}
+
+// Define all classes needed for a vertical splitter and its children.
+.hfw-vertical-splitter {
+  @extend .hfw-flex-container-row;
+
+  > div[name="gms-controls-splitter-pane1"] {
+    @extend .hfw-flex-container-column;
+  }
+
+  > div[name="gms-controls-splitter-bar"] {
+    @extend .hfw-splitter-bar;
+    @extend .hfw-vertical-split-bar;
+
+    > div[name="gms-controls-splitter-button"] {
+      @extend .hfw-splitter-dragbar-button;
+      @extend .hfw-horizontally-centered;
+      width: 6px;
+      margin: auto auto;
+    }
+
+    > div[name="gms-controls-splitter-dragbar"] {
+      @extend .hfw-splitter-dragbar;
+      @extend .hfw-horizontally-centered;
+      [hidden],
+      .hidden {
+        display: none;
+      }
+    }
+
+    > div[name="gms-controls-splitter-pane2"] {
+      @extend .hfw-flex-container-column;
+    }
+  }
+
+  // Define all classes needed for an horizontal splitter and its children.
+  .hfw-horizontal-splitter {
+    @extend .hfw-flex-container-column;
+
+    > div[name="gms-controls-splitter-pane1"] {
+      @extend .hfw-flex-container-column;
+    }
+
+    > div[name="gms-controls-splitter-bar"] {
+      @extend .hfw-splitter-bar;
+      @extend .hfw-horizontal-split-bar;
+
+      > div[name="gms-controls-splitter-button"] {
+        @extend .hfw-splitter-dragbar-button;
+        @extend .hfw-vertically-centered;
+        height: 6px;
+        align-self: center;
+      }
+
+      > div[name="gms-controls-splitter-dragbar"] {
+        @extend .hfw-splitter-dragbar;
+        @extend .hfw-vertically-centered;
+        [hidden],
+        .hidden {
+          display: none;
+        }
+      }
+    }
+
+    > div[name="gms-controls-splitter-pane2"] {
+      @extend .hfw-flex-container-column;
+    }
+  }
+
+  .gms-controls-splitter-flex {
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+  }
+}
+
+.hidden {
+  display: none !important;
+}

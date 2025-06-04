@@ -1,0 +1,49 @@
+<div name="gms-controls-splitter"
+     style="max-width: -webkit-fill-available; min-width: 0;"
+     class="flex-grow-1 hfw-touch-selection-disabled hfw-vertical-splitter"
+  [ngClass]="{'hfw-splitter-mobile':_beResponsive}"
+    (mouseup)="onMouseUp($event)" (touchend)="onTouchEnd($event)" #splitter>
+    <div name="gms-controls-splitter-pane1" style="min-width:0"
+        [ngStyle]="{ 'flex':firstPaneSizeFlex }"
+        [ngClass]="{ 'hidden':firstPaneClosedOrCollapsed,
+                     'hfw-hidden-fullscreen': hidePane1OnFullScreen,
+                     'full-pane-size-for-fullscreen': hidePane2OnFullScreen }">
+        <ng-content select="[pane1]" />
+    </div>
+    <div name="gms-controls-splitter-bar"
+        [ngStyle]="{'cursor': isLocked ? 'default' : (paneCollapsed ? 'default' : (isOrientationVertical ? 'ew-resize' : 'ns-resize') )}"
+        [ngClass]="{'hfw-splitter-bar-mobile':_beResponsive,
+                    'hidden':splitterBarHidden,
+                    'hfw-hidden-fullscreen':(hidePane1OnFullScreen || hidePane2OnFullScreen) }"
+        (mousedown)="onMouseDownSplitterBar($event)"
+        (touchstart)="onTouchStartSplitterBar($event)">
+
+        <div name="gms-controls-splitter-button"
+            [ngStyle]="{'cursor': isLocked ? 'default' : 'pointer', 'display': isLocked ? 'none' : 'unset'}"
+            [ngClass]="{'d-none':splitterDraggingActive,
+                          'hfw-flex-container-row':!splitterDraggingActive}"
+            (mousedown)="onMouseDownSplitterBarButton($event)"
+            (touchstart)="onTouchstartSplitterBarButton($event)">
+
+            <div class="hfw-splitter-dragbar-button-circle"></div>
+        </div>
+        <div name="gms-controls-splitter-dragbar"
+            [ngStyle]="{  'left':styleLeft,
+                          'top':styleTop}"
+            [ngClass]="{  'hfw-drag-active':splitterDraggingActive,
+                          'd-none':!splitterDraggingActive,
+                          'hfw-horizontally-centered':isOrientationVertical,
+                          'hfw-vertically-centered':!isOrientationVertical,
+                          'hfw-flex-container-row':splitterDraggingActive}">
+        </div>
+
+    </div>
+    <div name="gms-controls-splitter-pane2" style="min-width:0"
+        [ngStyle]="{ 'flex':secondPaneSizeFlex}"
+        [ngClass]="{ 'hidden':secondPaneClosedOrCollapsed,
+                     'hfw-hidden-fullscreen': hidePane2OnFullScreen,
+                     'full-pane-size-for-fullscreen': hidePane1OnFullScreen }"
+        class="hfw-flex-container-column">
+        <ng-content select="[pane2]" />
+    </div>
+</div>

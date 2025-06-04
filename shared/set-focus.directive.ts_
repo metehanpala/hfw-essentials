@@ -1,0 +1,13 @@
+import { Directive, ElementRef, Renderer, OnInit } from "@angular/core";
+
+@Directive({
+  selector : "[hfwSetFocus]"
+})
+export class SetFocusDirective implements OnInit {
+  constructor(public renderer: Renderer, public elementRef: ElementRef) {}
+
+  public ngOnInit(): void {
+    this.renderer.invokeElementMethod(
+      this.elementRef.nativeElement, "focus", []);
+  }
+}
