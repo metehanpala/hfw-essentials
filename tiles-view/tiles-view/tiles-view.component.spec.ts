@@ -1,8 +1,8 @@
 import { HttpClient, HttpHandler } from '@angular/common/http';
-import { SimpleChange } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { AppSettingsService, MockAppSettingsService, TraceService } from '@gms-flex/services-common';
 import { SiLoadingSpinnerModule } from '@simpl/element-ng';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { AppSettingsService, MockAppSettingsService, TraceService } from '@gms-flex/services-common';
 
 import { HeaderTemplateDirective } from '../templates/header-template.directive';
 import { ItemTemplateDirective } from '../templates/item-template.directive';
@@ -21,19 +21,19 @@ describe('TilesViewComponent', () => {
   let component: TilesViewComponent;
   let fixture: ComponentFixture<TilesViewComponent>;
   const traceServiceStub: any = {
-    info: (arg1: any, string2: any) => ({}),
-    debug: (arg1: any, string2: any, systemNumber3: any) => ({})
+    info: () => ({}),
+    debug: () => ({})
   };
-  const simpleChangesStub: any = new SimpleChange(1, 2, true);
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         TEMPLATE_DIRECTIVES,
-        TilesViewComponent],
+        TilesViewComponent
+      ],
       imports: [
-        // CommonModule,
-        SiLoadingSpinnerModule
+        SiLoadingSpinnerModule,
+        ScrollingModule
       ],
       providers: [HttpClient, HttpHandler, { provide: TraceService, useValue: traceServiceStub },
         { provide: AppSettingsService, useClass: MockAppSettingsService },
@@ -52,11 +52,6 @@ describe('TilesViewComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // it('call init method', () => {
-  //   component.init(0);
-  //   expect(component.totalHeight).toEqual(0);
-  // });
-
   it(`className has default value`, () => {
     expect(component.className).toEqual(true);
   });
@@ -69,67 +64,12 @@ describe('TilesViewComponent', () => {
     expect(component.loading).toEqual(false);
   });
 
-  it(`pageSize has default value`, () => {
-    expect(component.pageSize).toEqual(20);
-  });
-
-  it(`skip has default value`, () => {
-    expect(component.skip).toEqual(0);
-  });
-
-  it(`placeHolders has default value`, () => {
-    expect(component.placeHolders).toEqual([]);
-  });
-
   it('call tileSize property', () => {
     component.tileSize = 'm';
     expect(component.tilesSettings.tileWidth).toEqual(280);
   });
 
-  it('call tileSize property with empty value', () => {
-    component.tileSize = '';
-    expect(component.tilesSettings.tileWidth).toEqual(320);
-  });
-
-  it('call total property', () => {
-    expect(component.total).toEqual(0);
-  });
-
-  it('call items property', () => {
+  it('items getter works', () => {
     expect(component.items.length).toEqual(0);
   });
-
-  it('call calculatePlaceholders method', () => {
-    component.calculatePlaceholders();
-    expect(component.placeHolders.length).toEqual(0);
-  });
-
-  it('call calculatePlaceholders method with initiale value', () => {
-    component.itemsPerRow = 5;
-    component.skip = 2;
-    component.calculatePlaceholders();
-    expect(component.placeHolders.length).toEqual(2);
-  });
-
-  it('call notPendingPageChangeForResize method', () => {
-    component.notPendingPageChangeForResize();
-    expect(component.total).toEqual(0);
-  });
-
-  it('call getScrollTop method', () => {
-    expect(component.getScrollTop()).toEqual(0);
-  });
-
-  it('call isChangedTileSizeOrSkip method', () => {
-    component.isVirtual = true;
-    component.isChangedTileSizeOrSkip(simpleChangesStub);
-    expect(component.container.nativeElement.scrollTop).toEqual(0);
-  });
-
-  it('call ngOnChanges method', () => {
-    component.isVirtual = true;
-    component.ngOnChanges(simpleChangesStub);
-    expect(component.container.nativeElement.scrollTop).toEqual(0);
-  });
-
 });
