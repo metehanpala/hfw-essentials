@@ -79,6 +79,8 @@ export class TilesViewComponent implements AfterViewInit {
 
   public rows: any[][] = [];
 
+  public readonly trackByIndex = (index: number): number => index;
+
   private _tilesConfig!: TilesConfig;
 
   ngAfterViewInit(): void {

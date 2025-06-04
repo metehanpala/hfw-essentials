@@ -13,9 +13,9 @@
 >
   <cdk-virtual-scroll-viewport *ngIf="isVirtual" [itemSize]="rowHeight" class="hfw-tiles-view-wrap">
     <div class="tile-view-middle-segment">
-      <ng-container *cdkVirtualFor="let row of rows; let rowIndex = index">
+      <ng-container *cdkVirtualFor="let row of rows; let rowIndex = index; trackBy: trackByIndex">
         <div
-          *ngFor="let dataItem of row; let colIndex = index"
+          *ngFor="let dataItem of row; let colIndex = index; trackBy: trackByIndex"
           class="hfw-tilesview-item ps-1"
           [style.width.px]="tilesSettings.tileWidth"
           [style.height.px]="tilesSettings.tileHeight"
@@ -39,7 +39,7 @@
   <div *ngIf="!isVirtual" class="hfw-tiles-view-wrap">
     <div class="tile-view-middle-segment">
       <div
-        *ngFor="let dataItem of items; let index = index"
+        *ngFor="let dataItem of items; let index = index; trackBy: trackByIndex"
         class="hfw-tilesview-item ps-1"
         [style.width.px]="tilesSettings.tileWidth"
         [style.height.px]="tilesSettings.tileHeight"
