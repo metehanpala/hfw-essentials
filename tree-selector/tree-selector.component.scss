@@ -1,0 +1,22 @@
+.hfw-tree-selector-header {
+  flex-wrap: nowrap;
+  align-items: flex-start;
+
+  > .title-container {
+    flex: 1 1 auto;
+    margin-right: 14px;
+
+    > .input-filter {
+      font-weight: normal;
+      height: 1.75em;
+      padding-left: 6px;
+      padding-right: 6px;
+    }
+  }
+}
+
+.hfw-tree-selector-panel-fix{
+  div .panel-title{
+    width: 100%;
+  }
+}

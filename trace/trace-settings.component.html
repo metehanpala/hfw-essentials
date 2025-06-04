@@ -1,0 +1,54 @@
+<div class="modal-header">
+    <h5 class="modal-title">{{ "HFW_CONTROLS.TRACE_SETTINGS_TITLE" | translate }}</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="bsModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<hr class="mx-5 my-2">
+<div class="modal-body">
+  <form>
+    <div> {{ "HFW_CONTROLS.TRACE_SETTINGS_SELSEVERITY" | translate }}</div>
+    <div class="form-group">
+      <div class="form-check form-check-inline disabled">
+        <div class="form-check form-check-inline disabled">
+          <input type="checkbox" class="form-check-input" [(ngModel)]="errorEnabled" name="errorEnabled" disabled>
+          <label class="form-check-label" for="error"> {{ "HFW_CONTROLS.TRACE_SETTINGS_ERROR" | translate }}</label>
+        </div>
+      </div>
+      <div class="form-check form-check-inline disabled">
+          <input type="checkbox" class="form-check-input" [(ngModel)]="warnEnabled" name="warnEnabled" disabled>
+          <label class="form-check-label" for="warning"> {{ "HFW_CONTROLS.TRACE_SETTINGS_WARNING" | translate }}</label>
+      </div>
+      <div class="form-check form-check-inline">
+          <input type="checkbox" class="form-check-input" [(ngModel)]="infoEnabled" name="infoEnabled">
+          <label class="form-check-label" for="info" >{{ "HFW_CONTROLS.TRACE_SETTINGS_INFO" | translate }}</label>
+      </div>
+      <div class="form-check form-check-inline">
+          <input type="checkbox" class="form-check-input" [(ngModel)]="debugEnabled" name="debugEnabled">
+          <label class="form-check-label" for="debug">{{ "HFW_CONTROLS.TRACE_SETTINGS_DEBUG" | translate }} </label>
+      </div>
+    </div>
+    <div >Modules:</div>
+    <div class="form-group">
+      <div class="form-check form-check-inline">
+          <input type="checkbox" class="form-check-input" [(ngModel)]="allModulesEnabled" name="allModulesEnabled">
+          <label class="form-check-label"for="enabled">{{ "HFW_CONTROLS.TRACE_SETTINGS_ENABLED" | translate }} </label>
+      </div>
+    </div>
+    <span *ngIf="!allModulesEnabled">{{ "HFW_CONTROLS.TRACE_SETTINGS_SELECT" | translate }}</span>
+    <div *ngIf="!allModulesEnabled" style="overflow-y: auto; max-height: 100vh">
+        <hfw-list-box [listItems]="allModules" (itemChecked)=onItemChecked($event) class="hfw-trace-settings" />
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <div class="form-group">
+    <button type="button" class="btn btn-secondary" (click)="onClearModules()">
+      {{ "HFW_CONTROLS.TRACE_SETTINGS_CLEAR" | translate }}
+    </button>
+  </div>
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="bsModalRef.hide()">
+      {{ "HFW_CONTROLS.TRACE_SETTINGS_CLOSE" | translate }}
+    </button>
+</div>
+

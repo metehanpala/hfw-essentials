@@ -1,0 +1,59 @@
+<ng-container *ngIf="!excludeAccordion">
+  <!-- The accordion-group element(s) must be contained within an accordion element -->
+  <!-- <accordion> -->
+
+  <accordion-group [(isOpen)]="isSelectorOpen" class="hfw-tree-selector-panel-fix">
+    <div accordion-heading>
+      <div class="hfw-flex-container-row hfw-tree-selector-header">
+        <div class="hfw-flex-container-column title-container">
+          <span class="hfw-flex-item-grow">{{selectionLabel}}</span>
+          <input *ngIf="isSelectorOpen" type="text" class="form-control input-filter"
+            name="{{inputElementName}}"
+            [(ngModel)]="filterPattern"
+            (input)="onFilterPatternChange()"
+            (click)="$event.stopPropagation()" />
+        </div>
+        <div class="hfw-tree-folder-state"
+          [ngClass]="isSelectorOpen ? 'element-up-1-filled' : 'element-down-1-filled'">
+        </div>
+      </div>
+    </div>
+    <ng-container *ngTemplateOutlet="treeViewTemplate" />
+  </accordion-group>
+
+  <!-- </accordion> -->
+</ng-container>
+
+<ng-container *ngIf="excludeAccordion">
+  <div class="mb-5" *ngIf="enableItemFilter">
+    <si-search-bar
+      [placeholder]="itemFilterPlaceholder"
+      colorVariant="base-0"
+      [showIcon]="true"
+      [debounceTime]="100"
+      (searchChange)="onFilterPatternChange($event)" />
+    <!--
+      [prohibitCharacters]="'*?'"
+    -->
+  </div>
+  <div>
+    <ng-container *ngTemplateOutlet="treeViewTemplate" />
+  </div>
+</ng-container>
+
+<ng-template #treeViewTemplate>
+  <si-tree-view class="h-100" style="display: grid;" *ngIf="isSelectorOpen || !destroyTreeOnCollapse"
+    [flatTree]="false"
+    [items]="selectionTreeFiltered"
+    [isVirtualized]="false"
+    [groupedList]="false"
+    [folderStateStart]="false"
+    [deleteChildrenOnCollapse]="false"
+    [enableOptionbox]="false"
+    [enableCheckbox]="true"
+    [inheritChecked]="true"
+    [enableDataField1]="false"
+    [enableSelection]="false"
+    [enableContextMenuButton]="false"
+    (treeItemCheckboxClicked)="onSelectionChange($event)" />
+</ng-template>
