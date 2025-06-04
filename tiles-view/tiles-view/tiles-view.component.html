@@ -1,0 +1,59 @@
+<!-- header -->
+<div
+    *ngIf="headerTemplate"
+    class="ps-1"
+>
+    <ng-template
+        [ngTemplateOutlet]="headerTemplate!.templateRef"
+    />
+</div>
+
+<!-- content -->
+  <div
+  class="hfw-tiles-content ml-4" role="presentation" tabindex="-1"
+  [class.hfw-tiles-loading]="loading"
+  #container
+  >
+      <div class="hfw-tiles-view-wrap" role="presentation">
+        <div
+          #table
+          class="tile-view-middle-segment"
+        >
+          <!--offset empty placeholder-->
+          <div *ngFor="let dataItem of placeHolders; trackBy: trackByIndex"
+          [style.width.px]="tilesSettings.tileWidth"
+          [style.height.px]="tilesSettings.tileHeight"
+          [style.margin]="tilesSettings.topBottomMargin + 'px ' + tilesSettings.leftRightMargin*2 + 'px ' + tilesSettings.topBottomMargin + 'px ' + 0 + 'px'">
+          </div>
+          <!--loaded tiles items -->
+          <div
+              *ngFor="let dataItem of items; let index = index; let first = first; let last = last; trackBy: trackByIndex"
+              class="hfw-tilesview-item ps-1"
+              [style.width.px]="tilesSettings.tileWidth"
+              [style.height.px]="tilesSettings.tileHeight"
+              [style.margin]="tilesSettings.topBottomMargin + 'px ' + tilesSettings.leftRightMargin*2 + 'px ' + tilesSettings.topBottomMargin + 'px ' + 0 + 'px'">
+            <ng-template
+                [templateContext]="{
+                    templateRef: itemTemplate?.templateRef,
+                    $implicit: dataItem,
+                    dataItem: dataItem,
+                    index: index,
+                    isFirst: first,
+                    isLast: last
+                }"
+            />
+          </div>
+        </div>
+      </div>
+      <div role="presentation">
+        <div [style.height.px]="totalHeight"></div>
+      </div>
+
+      <!-- loading indicator -->
+      <div *ngIf="loading" class="progress-container">
+        <div class="progress-inner">
+            <si-loading-spinner />
+        </div>
+    </div>
+
+  </div>

@@ -1,0 +1,49 @@
+.hfw-tilesview {
+  overflow: auto;
+  flex: 1;
+  display: flex;
+}
+
+.hfw-tiles-view-wrap {
+  float: left;
+  width: 100%;
+}
+
+.hfw-tilesview-item {
+  display: flex;
+}
+
+.hfw-tiles-content {
+  overflow: auto;
+  min-height: 0;
+}
+
+.tile-view-middle-segment {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.progress-container {
+  position: absolute;
+  height: 100%;
+  width: 98%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.progress-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 43px;
+}
+
+.hfw-tiles-loading {
+  opacity: 0.8;
+}
