@@ -1,0 +1,42 @@
+.btncont {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+.btnitem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.p-margin {
+  margin: 5px 0 5px;
+}
+
+.modal-header,
+.modal-body,
+.modal-footer {
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-left: 12px;
+  margin-right: 12px;
+}
+button.float-end,
+button.float-end:active
+button.float-end:selected {
+  opacity: 0.75;
+  padding: 12px 12px;
+  margin: -12px -12px -12px auto;
+  overflow: hidden;
+  outline: none;
+  background: transparent;
+  border: none;
+}
+button span.close-border {
+  border: none;
+  outline: none;
+  overflow: hidden;
+}

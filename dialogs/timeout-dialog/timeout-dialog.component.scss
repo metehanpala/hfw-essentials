@@ -1,0 +1,16 @@
+@import '@simpl/element-theme/src/styles/_variables';
+
+.body-container {
+    display: flex;
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.timeout-icon {
+    align-self: center;
+    justify-content: center;
+    color: $element-status-warning;
+}

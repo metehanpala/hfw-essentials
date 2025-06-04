@@ -1,0 +1,7 @@
+<div class="col-sm-10 py-4">
+  <div class="form-switch">
+    <input (change)="onItemClicked()" [(ngModel)]="listItem.checked" [checked]="listItem.checked" class="form-check-input"
+      type="checkbox" [id]="id" role="switch">
+    <label class="form-check-label" [for]="id">{{listItem.label}}</label>
+  </div>  
+</div>

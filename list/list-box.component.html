@@ -1,0 +1,3 @@
+<hfw-list-box-item *ngFor="let listItem of listItems; trackBy: trackByIndex" [listItem]="listItem"
+  (itemClicked)=onItemClicked($event) [enableCheckbox]="enableCheckbox" [enableOptionbox]="enableOptionbox"
+  display="contents" />

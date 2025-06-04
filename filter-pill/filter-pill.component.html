@@ -1,0 +1,13 @@
+<div class="filter-pill ps-5 py-1 pe-3">
+  <div class="pill-description">
+    <p class="si-caption label">{{ filterTitle }}</p>
+    <p *ngIf="!displayIcons" class="si-caption value" [class.multiple]="hasMultipleValues">{{ filterValuesString }}</p>
+    <div *ngIf="displayIcons">
+      <i *ngFor="let value of pillDataValues; trackBy: trackByIndex" class="icon element-record-filled" [ngStyle]="{'color': value}" style="font-size: 12px"></i>
+    </div>
+  </div>
+  <button type="button" class="btn btn-circle btn-sm btn-tertiary pill-btn-close element-cancel ms-1"
+    [disabled]="pillDisable"
+    (click)="onDeleteClick()">
+  </button>
+</div>

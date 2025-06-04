@@ -1,0 +1,20 @@
+<div class="modal-header">
+  <span class="modal-title si-title-2">{{ "HFW_CONTROLS.TIMEOUT_DIALOG_TITLE" | translate }}</span>
+</div>
+<div class="modal-body">
+  <div class="body-container">
+    <div class="element-warning-filled icon timeout-icon me-4"></div>
+    <div class="text-container">
+      <p class="mb-0">{{ 'HFW_CONTROLS.TIMEOUT_DIALOG_BODY' | translate: {time: timeLeft} }}</p>
+      <p class="mb-0">{{ "HFW_CONTROLS.TIMEOUT_DIALOG_BODY_3" | translate }}</p>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class=" btn btn-secondary" (click)="onNo()">
+    {{ "HFW_CONTROLS.TIMEOUT_DIALOG_NOBTN" | translate }}
+  </button>
+  <button type="button" class="btn btn-default btn-primary" (click)="onYes()">
+    {{ "HFW_CONTROLS.TIMEOUT_DIALOG_YESBTN" | translate }}
+  </button>
+</div>

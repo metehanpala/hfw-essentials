@@ -1,0 +1,52 @@
+<div class="modal-header">
+  <h4 class="modal-title  pull-left">
+
+    <ng-container *ngIf="header.length === 0">
+      {{ "HFW_CONTROLS.UNSAVED_DIALOG_TITLE" | translate }}
+    </ng-container>
+    <ng-container *ngIf="header.length > 0">
+      {{ header }}   
+    </ng-container>
+
+  </h4>
+  <button type="button" class="close btn-close float-end" aria-label="Close" (click)="onCancel()">
+    <span aria-hidden="true" class="close-border">&times;</span>
+  </button>
+</div>
+
+  <div class="modal-body">
+     <ng-container *ngIf="body.length === 0">
+      {{ "HFW_CONTROLS.UNSAVED_DIALOG_BODY_1" | translate:{snapin: title } }}    
+    </ng-container>
+    <ng-container *ngIf="body.length > 0">
+      {{ body }}   
+    </ng-container>
+
+  <si-loading-spinner *ngIf="loading" />
+  <div class="btncont" *ngIf="!loading">
+    <br>
+    <button type="button"  class="btn btn-primary btnitem" (click)="onYes()">
+      <p class="p-margin" *ngIf="yes.length === 0">
+        {{ "HFW_CONTROLS.UNSAVED_DIALOG_YESBTN" | translate }}
+      </p>
+      <p class="p-margin" *ngIf="yes.length > 0">
+        {{ yes }}
+      </p>
+    </button>
+    <br>
+    <button type="button"  class="btn btn-default btn-secondary btnitem" (click)="onNo()">
+      <p class="p-margin" *ngIf="no.length === 0">
+        {{ "HFW_CONTROLS.UNSAVED_DIALOG_NOBTN" | translate }}
+      </p>
+      <p class="p-margin" *ngIf="no.length > 0">
+        {{ no }}
+      </p>
+    </button>
+    <br>
+  </div>
+</div>
+<div class="modal-footer" *ngIf="!loading">
+  <button type="button" class="btn btn-default btn-secondary" title="Cancel" (click)="onCancel()">
+    {{ "HFW_CONTROLS.UNSAVED_DIALOG_CANCELBTN" | translate }}
+  </button>
+</div>

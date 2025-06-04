@@ -1,0 +1,56 @@
+@import '@simpl/element-theme/src/styles/_variables';
+
+$filter-pill-background-color: $element-ui-4;
+$filter-pill-button-close-size: map-get($spacers, 6);
+$filter-pill-text-size: 12px;
+$filter-pill-border-radius: 14px;
+$filter-pill-max-width: 140px;
+
+.filter-pill {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: auto;
+  max-width: $filter-pill-max-width;
+  border-radius: $filter-pill-border-radius;
+  background: $filter-pill-background-color;
+
+  .pill-description {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: $filter-pill-text-size;
+    line-height: $filter-pill-text-size;
+    min-width: 0;  // allows `overflow` setting in nested <p> class to have an effect; otherwise, no ellipsis on long text!
+
+    p {
+      margin: 0;
+      min-height: $filter-pill-text-size;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .label {
+      font-weight: normal;
+    }
+
+    .value {
+      font-weight: normal;
+      color: $element-text-active;
+
+      &.multiple {
+        font-style: italic;
+      }
+    }
+  }
+
+  .pill-btn-close {
+    flex: 0 0 auto;
+    height: $filter-pill-button-close-size;
+    width: $filter-pill-button-close-size;
+    min-height: $filter-pill-button-close-size;
+    min-width: $filter-pill-button-close-size;
+    font-size: $filter-pill-button-close-size;
+  }
+}
