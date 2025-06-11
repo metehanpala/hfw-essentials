@@ -1,65 +1,65 @@
-<!-- header -->
+<!--
+  tiles-view.component.html
+  ------------------------
+  Template for TilesViewComponent.
+  Renders an optional header, a grid of tiles (virtualized or static), and a loading overlay.
+-->
+
+<!-- ===================== HEADER SECTION ===================== -->
+<!--
+  If a custom header template is provided by the consumer,
+  render it at the top of the tile view.
+-->
 <div *ngIf="headerTemplate" class="ps-1">
   <ng-template [ngTemplateOutlet]="headerTemplate.templateRef" />
 </div>
 
-<!-- content -->
-<div
-  class="hfw-tiles-content ml-4"
-  role="presentation"
-  tabindex="-1"
-  [class.hfw-tiles-loading]="loading"
-  #container
->
-  <cdk-virtual-scroll-viewport *ngIf="isVirtual" [itemSize]="rowHeight" class="hfw-tiles-view-wrap">
-    <div class="tile-view-middle-segment">
-      <ng-container *cdkVirtualFor="let row of rows; let rowIndex = index">
-        <div
-          *ngFor="let dataItem of row; let colIndex = index"
-          class="hfw-tilesview-item ps-1"
-          [style.width.px]="tilesSettings.tileWidth"
-          [style.height.px]="tilesSettings.tileHeight"
-          [style.margin]="tilesSettings.topBottomMargin + 'px ' + tilesSettings.leftRightMargin*2 + 'px ' + tilesSettings.topBottomMargin + 'px 0px'"
-        >
-          <ng-template
-            [templateContext]="{
-              templateRef: itemTemplate?.templateRef,
-              $implicit: dataItem,
-              dataItem: dataItem,
-              index: rowIndex * itemsPerRow + colIndex,
-              isFirst: false,
-              isLast: false
-            }"
-          ></ng-template>
-        </div>
-      </ng-container>
-    </div>
-  </cdk-virtual-scroll-viewport>
+<!-- ===================== TILE CONTENT SECTION ===================== -->
+<!--
+  Main content area for tiles.
+  - Handles both virtualized and non-virtualized rendering.
+  - Sets accessibility attributes (role="presentation", tabindex="-1").
+  - Applies a loading class if data is being loaded.
+  - Exposes container reference (#container) for layout calculations in the component.
+-->
+<div class="hfw-tiles-content ml-4" role="presentation" tabindex="-1" [class.hfw-tiles-loading]="loading" #container>
 
-  <div *ngIf="!isVirtual" class="hfw-tiles-view-wrap">
-    <div class="tile-view-middle-segment">
-      <div
-        *ngFor="let dataItem of items; let index = index"
-        class="hfw-tilesview-item ps-1"
-        [style.width.px]="tilesSettings.tileWidth"
-        [style.height.px]="tilesSettings.tileHeight"
-        [style.margin]="tilesSettings.topBottomMargin + 'px ' + tilesSettings.leftRightMargin*2 + 'px ' + tilesSettings.topBottomMargin + 'px 0px'"
-      >
-        <ng-template
-          [templateContext]="{
+  <!-- === VIRTUALIZED GRID === -->
+  <!--
+    If virtualization is enabled (isVirtual):
+    - Use Angular CDK's cdk-virtual-scroll-viewport for efficient rendering of large data sets.
+    - Set the itemSize (height per row).
+    - Iterate through precomputed 'rows' (each row is an array of items).
+    - For each tile:
+      - Set tile width, height, and margin dynamically from config.
+      - Pass tile context to the injected item template.
+  -->
+  <cdk-virtual-scroll-viewport [itemSize]="rowHeight" class="hfw-tiles-view-wrap">
+    <div class="hfw-tile-row" *cdkVirtualFor="let row of rows; let rowIndex = index; trackBy: trackByIndex"
+      [style.height.px]="rowHeight">
+      <div *ngFor="let dataItem of row; let colIndex = index; trackBy: trackByIndex" class="hfw-tilesview-item ps-1"
+        [style.width.px]="tilesSettings.tileWidth" [style.height.px]="tilesSettings.tileHeight"
+        [style.margin]="tilesSettings.topBottomMargin + 'px ' + tilesSettings.leftRightMargin*2 + 'px ' + tilesSettings.topBottomMargin + 'px 0px'">
+        <ng-template [templateContext]="{
             templateRef: itemTemplate?.templateRef,
             $implicit: dataItem,
             dataItem: dataItem,
-            index: index,
+            index: rowIndex * itemsPerRow + colIndex,
             isFirst: false,
             isLast: false
-          }"
-        ></ng-template>
+          }" />
       </div>
     </div>
-  </div>
+  </cdk-virtual-scroll-viewport>
 
-  <!-- loading indicator -->
+
+
+
+  <!-- ===================== LOADING INDICATOR ===================== -->
+  <!--
+    When 'loading' is true, overlay a progress indicator.
+    Uses an injected or standard spinner (e.g., <si-loading-spinner />).
+  -->
   <div *ngIf="loading" class="progress-container">
     <div class="progress-inner">
       <si-loading-spinner />
