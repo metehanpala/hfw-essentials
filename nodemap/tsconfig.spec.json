@@ -1,0 +1,20 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../out-tsc/spec",
+    "types": [
+      "jasmine",
+      "node",
+      "signalr"
+    ],
+    "paths": {
+      "@gms-flex/nodemap-root-services": [
+        "dist/@gms-flex/nodemap-root-services"
+      ]
+    }
+  },
+  "include": [
+    "**/*.spec.ts",
+    "**/*.d.ts"
+  ]
+}

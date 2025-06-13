@@ -1,0 +1,34 @@
+{
+  "name": "@gms-flex/nodemap",
+  "version": "9.0.0-alpha.6",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "repository": {
+    "type": "git",
+    "url": "https://code.siemens.com/gms-flex-ext/gms-nodemap.git"
+  },
+  "author": {
+    "name": "Siemens AG",
+    "email": "info@siemens.com"
+  },
+  "homepage": "https://code.siemens.com/gms-flex-ext/gms-nodemap",
+  "bugs": "https://code.siemens.com/gms-flex-ext/gms-nodemap/issues",
+
+  "peerDependencies": {
+    "@angular/common": "19",
+    "@angular/core": "19",
+    "@angular/forms": "19",
+    "@angular/router": "19",
+    "@gms-flex/services": "~9.0.0-alpha",
+    "@gms-flex/services-common": "~9.0.0-alpha",
+    "@gms-flex/controls": "~9.0.0-alpha",
+    "@gms-flex/core": "~9.0.0-alpha",
+    "@ngx-translate/core": "15",
+    "@ngx-translate/http-loader": "8",
+    "@simpl/element-ng": "46",
+    "@simpl/element-theme": "46",
+    "@gms-flex/snapin-common": "~9.0.0-alpha",
+    "ngx-bootstrap": "19",
+    "rxjs": "7",
+    "zone.js": "0.14"
+  }
+}

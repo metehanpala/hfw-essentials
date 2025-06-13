@@ -1,0 +1,9 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/@gms-flex/nodemap",
+  "allowedNonPeerDependencies": ["."],
+  "assets": ["i18n", "profile"],
+  "lib": {
+    "entryFile": "./src/public_api.ts"
+  }
+}

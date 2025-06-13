@@ -1,0 +1,86 @@
+{
+  "hfwExtension": {
+    "snapInTypes": [
+      {
+        "typeId": "NodeMapType",
+        "resourceFolder": "@gms-flex/nodemap/i18n/"
+      }
+    ],
+    "hfwFrames": [
+      {
+        "snapInInstances": [
+          {
+            "snapInId": "node-map",
+            "canLoseFocusOnPreselection": true,
+            "typeId": "NodeMapType",
+            "tabTitleId": "SNAPIN-TITLE"
+          }
+        ],
+        "panes": [
+          {
+            "snapInReferences": [
+              {
+                "id": "node-map",
+                "communicationRules": [
+                  {
+                    "destination": "system-manager.single-pane-nodemap",
+                    "hitRightPanel": true
+                  }
+                ],
+                "config": {
+                  "enableValues": [
+                    {
+                      "enabled": false
+                    }
+                  ],
+                  "postActiveView": true
+                }
+              }
+            ],
+            "id": "single-pane-nodemap",
+            "hasTab": false,
+            "hasFullScreen": true
+          }
+        ],
+        "layoutInstances": [
+          {
+            "paneInstance": {
+              "id": "single-pane-nodemap"
+            },
+            "id": "1-pane-node-map",
+            "iconClass": "element-layout-pane-1",
+            "isDefault": false
+          }
+        ],
+        "views": [
+          {
+            "id": "nodemap-view",
+            "viewLayouts": [
+              {
+                "id": "1-pane-node-map"
+              }
+            ],
+            "preferredSnapin": {
+              "paneId": "single-pane-nodemap",
+              "snapinId": "node-map"
+            }
+          }
+        ],
+        "id": "system-manager"
+      }
+    ],
+    "verticalBarConfigs": [
+      {
+        "id": "system",
+        "verticalBarItems": [
+          {
+            "icon": "element-automation-station",
+            "id": "node-map",
+            "targetView": "nodemap-view",
+            "targetFrame": "system-manager"
+          }
+        ]
+      }
+    ]
+  }
+}

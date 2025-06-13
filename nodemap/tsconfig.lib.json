@@ -1,0 +1,31 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../out-tsc/lib",
+    "declaration": true,
+    "inlineSources": true,
+    "types": [
+      "node",
+      "signalr"
+    ],
+    "lib": [
+      "dom",
+      "es2022"
+    ],
+    "paths": {
+      "@gms-flex/nodemap-root-services": [
+        "dist/@gms-flex/nodemap-root-services"
+      ]
+    }
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "skipTemplateCodegen": true,
+    "strictMetadataEmit": true,
+    "enableResourceInlining": true,
+    "compilationMode": "partial"
+  },
+  "exclude": [
+    "**/*.spec.ts"
+  ]
+}

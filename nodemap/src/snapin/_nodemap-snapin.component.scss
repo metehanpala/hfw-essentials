@@ -1,0 +1,120 @@
+@import "@simpl/element-theme/src/styles/_variables";
+
+.symbol {
+  height: 50px;
+  width: 50px;
+  z-index: 3;
+}
+
+.img-align {
+  position: relative;
+  display: inline-block; /* <= shrinks container to image size */
+  transition: transform 150ms ease-in-out;
+}
+
+.iimg-align img { /* <= optional, for responsiveness */
+   display: block;
+   max-width: 100%;
+   height: auto;
+}
+
+.img-align svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.align_card_icon {
+  padding: 0.0rem 0rem !important;
+  width: 15%;
+  text-align: center;
+  font-size: 1.5rem
+}
+
+.span-text
+{
+  color: gray;
+}
+
+.button-background {
+  background-color: $element-base-0;
+}
+
+.card-background {
+  background-color: 'tranparent';
+}
+
+.white-icon {
+  color: transparent;
+}
+
+.footer-align-right {
+  position: absolute;
+  top: 75%;
+  left: 83%;
+}
+
+.footer-text {
+  position: absolute;
+  top: 80%;
+  left: 15%;
+  font-weight: bold;
+  //font-size: 12px;
+}
+
+.footer-icon {
+  position: absolute;
+  top: 79%;
+}
+
+.footer-text-disconnect {
+  position: absolute;
+  top: 80%;
+  left: 2%;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+:host ::ng-deep .nodemap__header .card-header {
+  padding-left: 6px;
+}
+
+:host ::ng-deep .nodemap__item .btn-flat .icon {
+  font-size: 20px !important;
+}
+
+.my-custom-scrollbar {
+  position: relative;
+  height: 200px;
+  overflow: auto;
+}
+.table-wrapper-scroll-y {
+  display: block;
+}
+
+.feedback-error{
+    font-size: 0.75rem;
+    width: 100%;
+    margin-top: 0.5rem;
+    color: var(--element-text-danger);
+}
+.list-group-item-empty{
+  height: auto !important;
+}
+
+.active-item {
+  border: 1px solid $element-ui-0;
+}
+
+.deactive-item {
+  border: none;
+}
+
+.object-label-with-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 0;
+  height: 16;
+  border-bottom-width: 0;
+}
