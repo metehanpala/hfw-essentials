@@ -1,0 +1,26 @@
+.action-bar {
+  flex: 0 1 auto;
+}
+
+hfw-tiles-view {
+  height: inherit;
+}
+
+.search-bar-view {
+  width: 600px; 
+}
+
+.search-bar {
+  flex: 0 0 60%;
+}
+
+.search-bar-div {
+  place-content: center space-between;
+  margin-left: 16px;
+  margin-top: 16px;
+  margin-right: 16px;
+}
+
+.trend-search-bar {
+  margin: 0.3em;
+}

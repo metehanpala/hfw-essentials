@@ -1,0 +1,41 @@
+<form class="form-horizontal">
+  <div *ngIf="sampleDensityOptions.length != 0">
+    <div class="panel">
+      <div class="panel-body panel-body-axis card-body card-body-axis">
+        <div class="pt-5 textbox-div textbox-div-left">
+          <span class="label">{{ 'TREND_FOLDER.FILE_TYPE' | translate}}</span>
+        </div>
+      </div>
+    </div>
+   
+    <div class="form-group">
+      <div class="fileoption-spacing">
+        <div *ngFor="let fileType of fileTypes; let i = index;" class="form-check form-check-inline">
+          <input type="radio" name="fileType" [value]="fileType.id" [id]="fileType.id" class="form-check-input" [(ngModel)]="formatselected" />
+          <label class="form-check-label" [for]="fileType.id">
+            {{ fileType.value | translate }}
+          </label>
+        </div>
+      </div>
+    </div>
+  <div class="panel">
+      <div class="panel-body panel-body-axis card-body card-body-axis">
+        <div class="pt-5 textbox-div textbox-div-left">
+          <span class="label">{{ 'TREND_FOLDER.SAMPLE_DENSITY' | translate}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="options" *ngIf="diffInHours !== null || diffInDays !== null">
+      <div *ngFor="let SDoption of sampleDensityOptions; let i = index;">
+        <label><input type="radio" name="SampleDensity" [value]="SDoption.id" [id]="'SDoption' + i" [(ngModel)]="selectedSampleDensity"/>
+          {{ SDoption.densityTitle | translate}}
+        </label>
+      </div>
+    </div>
+  </div>
+          <!--  handled for not supporting sample density -->
+          <div *ngIf="sampleDensityOptions.length == 0" class="not-supported-label">
+            <h4> {{ invalidDensitySelectedMessage }} </h4>
+            <h5> {{ invalidDensitySelectedInfo}}</h5>
+          </div>
+  </form>

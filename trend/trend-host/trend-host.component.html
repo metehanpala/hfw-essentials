@@ -1,0 +1,21 @@
+<ng-template #propertyContent cdkPortal>
+  <div class="propertyContent">
+    <span class="propertyIcon {{ propertyIcon$ | async }}"></span>
+    <div class="text-content">
+      <p>{{ propertyDisplayName }}</p>
+      <p>{{ propertyName }}</p>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #informationContent cdkPortal>
+  <div class="informationContent">
+      <gms-about-popover
+          [clientId]="snapInId"
+          [objectList]="objectList"
+          placement="bottom"
+          [clientZone]="clientZone"
+          [excludePopoverContainer]="true"
+          />
+  </div>
+</ng-template>

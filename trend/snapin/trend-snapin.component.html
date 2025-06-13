@@ -1,0 +1,41 @@
+<div *ngIf="IsTrendFolderSelected; then trendpreview else trendchart"></div>
+
+<ng-template #trendpreview>
+  <!-- <trend-preview-page class="trend-preview-page hfw-flex-item-grow" [selectedObject]="selectedBrowserObject"></trend-preview-page> -->
+  <!-- TODO:  (dblclick)="fakeChange($event)" to be removed. -->
+  <gms-search-view #searchComponent (generalSettingClicked)="generalSettingClicked()" (addNewTrend)="openNewTrend()"
+    class="gms-search-container" [selectedObject]="browserObject" [placeholder]="searchPlaceHolder" />
+</ng-template>
+
+<ng-template #trendchart>
+  <div *ngIf="showEmptySnapin" class="empty-snapin">
+    <h4 class="delete-message">{{'TREND_FOLDER.EMPTY_SNAPIN_TEXT_TITLE' | translate}}</h4>
+  </div>
+  <!-- TODO: (dblclick)="fakeChange($event)" to be removed. -->
+  <gms-trend-chart-selector *ngIf="!showEmptySnapin"
+    class="hfw-flex-container-column hfw-flex-item-grow snapin-container" [systemBrowserObject]="browserObject"
+    (showHideSnapinValueChanged)="showHideTrendChart($event)"  [loading]="inProgress" />
+</ng-template>
+
+<!-- <div *ngIf="showGenSettings"> -->
+<ng-template #template>
+  <div class="settings-model">
+    <div class="modal-header modal-popup">
+      <h4 class="modal-title pull-left">{{'TREND_FOLDER.TREND_SETTINGS' | translate}}</h4>
+    </div>
+    <div class="modal-body modal-body-settings">
+      <gms-general-settings />
+      <div class="acct-cmd-bts">
+        <button class="btn btn-primary acct-cmd-btns" type="submit"
+          (click)="saveGeneralSettings()">{{'TREND_FOLDER.CLOSE' | translate}}</button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<gms-trend-host [fullId]="fullId" [clientZone]="sceneZone" />
+<!-- </div> -->
+<!-- <router-outlet></router-outlet> -->
+
+<div *ngIf="inProgress" class="progress-container">
+  <si-loading-spinner  />
+</div>

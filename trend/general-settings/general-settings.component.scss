@@ -1,0 +1,155 @@
+.ul-container {
+  list-style: none;
+  display: inline-block;
+  padding-left: inherit;
+}
+
+.li-menu-item {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.timerange-input {
+  padding: 5px 0 5px 10px;
+}
+
+.anchor-tab-menu-item {
+  color: black;
+  text-decoration: none;
+}
+
+.anchor-tab-menu-item:hover {
+  text-decoration: none;
+  color: lightblue;
+}
+
+.slider-label {
+  display: flex;
+  justify-content: space-between;
+}
+
+.selected-item {
+  text-decoration: none;
+  color: lightblue;
+}
+
+.zero-padding {
+  padding: 0;
+}
+
+.timerange-element {
+  padding: 2px 6px 2px 0;
+  width: 7em;
+  margin-left: 0.5em;
+}
+
+.control-label {
+  white-space: nowrap;
+  padding-top: 0px;
+}
+
+.control-background {
+  background-color: white;
+}
+
+.timerange {
+  display: flex;
+  margin-left: 1em;
+  padding-left: 0px;
+  padding-top: 2px;
+}
+
+.modal-padding {
+  // padding: 10px;
+  padding: 8px;
+  margin-top: 0.5em;
+}
+
+.slider-margin {
+  margin: 10px;
+  padding-left: 2px;
+  padding-right: 20px;
+  margin-top: 15px;
+  margin-bottom: 4px;
+}
+
+.text {
+  color: lightgrey;
+}
+
+.control-divider {
+  background-color: rgb(194, 198, 207);
+  height: 1px;
+  width: 100%;
+  margin-top: 40px;
+
+}
+
+.control-label-right {
+  text-align: right;
+  // margin-top: 5px;
+  padding-top: 0px;
+}
+
+.control-label-timerange {
+  white-space: nowrap;
+  padding-top: 9px;
+  padding-left: 0px;
+}
+
+.control-label-default {
+  white-space: nowrap;
+  padding-top: 15px;
+  vertical-align: top;
+  padding-left: 8px;
+}
+
+.settings-quality-switch {
+  vertical-align: top;
+  padding-top: 15px;
+}
+
+.timerange-dropdown {
+  flex-grow: 2;
+}
+
+.data-quality {
+  margin-left: 218px;
+}
+
+.panel-body {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.panel-body-axis {
+  padding: 0;
+}
+
+.textbox-div {
+  min-width: 226px;
+  flex: 1 0 226px;
+
+  &.textbox-div-left {
+    padding: 16px 0 0 7px;
+  }
+
+  &.textbox-div-right {
+    padding: 16px;
+    padding-left: 7px;
+    text-align: right;
+  }
+}
+
+#indication-label {
+  float: left;
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+  padding-right: 1.5em;
+}
+
+.indication-show-toggle {
+  float: left;
+  padding-left: 1.5em;
+}

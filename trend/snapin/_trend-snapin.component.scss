@@ -1,0 +1,140 @@
+$marengo-black-300: #c2c6cf; // stylelint-disable-line color-no-hex
+$spinner-background: rgba(255, 255, 255, 0.8);
+$spinner-color: #5c6775; // stylelint-disable-line color-no-hex
+
+.search-bar-container {
+  width: 50%;
+}
+
+.gms-search-container {
+  height: 100%;
+  top: 0px;
+  position: relative;
+  width: 100%;
+  left: 0px;
+}
+
+.settings-model {
+  .modal-header {
+    border-bottom: 1px solid lightgray;
+    margin-left: 20px;
+    // margin-right: 10px;
+    padding-left: 0px;
+    padding-bottom: 10px;
+    padding-right: 0px;
+    margin-right: 20px;
+  }
+
+  .modal-body-settings {
+    // min-height: 30vh;
+    display: flex;
+    flex-direction: column;
+    min-height: unset;
+    height: 386px;
+    border-radius: 10%;
+    padding: 21px;
+  }
+
+  .modal-title {
+    margin-top: 15px;
+    font-weight: 500;
+  }
+
+  .acct-cmd-bts {
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid rgb(194, 198, 207);
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
+
+.general-settings {
+  margin-left: 82%;
+  margin-top: 12px;
+  z-index: 1;
+}
+
+.trend-settings {
+  height: 0px;
+}
+
+.close {
+  color: lightblue;
+}
+
+.empty-snapin {
+  height: 100%;
+  position: relative;
+  display: flex;
+  place-content: center;
+  align-items: center;
+}
+
+.acct-cmd-btns {
+  min-width: 125px;
+  max-width: 125px;
+  margin-top: 21px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.delete-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+}
+
+.modal-content {
+  width: 600px;
+  font-weight: 500;
+}
+
+.modal-dialog {
+  .modal-content {
+    width: 600px;
+    font-weight: 500;
+  }
+}
+
+
+.progress-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 100;
+
+  &,
+  .progress-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 180px;
+    margin-top: 80px;
+  }
+
+  .progress-inner {
+    background-color: $spinner-background;
+    width: 85px;
+    height: 85px;
+    border-radius: 43px;
+  }
+
+  .icon-spin {
+    font-size: 100px;
+    color: $spinner-color;
+    animation: progress-spin 2s infinite linear;
+  }
+}
+.spinner-centered-child {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

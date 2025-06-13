@@ -1,0 +1,28 @@
+<div class="trend-div" [ngStyle]="{'background-color': currentSelectedTheme === 'light' ? 'white':''}" #trenddiv>
+  <si-trendviewer [editable]="true" renderer = 'svg' [openChartInEditMode]="subOpenChartInEditMode" [instanceId]="snapinId"
+  />
+</div>
+
+<ng-template #template let-modalRef="modalRef">
+  <div class="export-model-trend">
+  <div class="modal-header">
+    <h4 class="modal-title" id="sample-modal-title">{{'TREND_FOLDER.EXPORT_HEADER'| translate }}</h4>
+  <button type="button" class="btn btn-circle btn-sm btn-ghost element-cancel" aria-label="Close modal" (click)="modalRef.hide('cancel')"></button>
+  </div>
+      <div id="divider" class="control-divider"></div>
+  <div class="modal-body trend-settings ">
+    <gms-trend-export (invalidRangeSelected)="onUnsupportedRangeSelected($event)" />
+    <div *ngIf="!isGenerateDisable">
+      {{'TREND_FOLDER.TREND_EXPORT.NOTE_TEXT' | translate}}: {{'TREND_FOLDER.TREND_EXPORT.NOTE_MESSAGE' | translate}}
+    </div>
+  </div>
+    <div class="modal-footer">
+      <button type="button" [disabled]="isGenerateDisable" class="btn btn-primary" (click)="processExport()">
+        {{ 'TREND_FOLDER.GENERATE_BUTTON' | translate }}
+      </button>
+     <button type="button" class="btn btn-secondary me-6" (click)="cancel()">
+        {{ 'TREND_FOLDER.CANCEL_BUTTON' | translate}}
+      </button>
+    </div>
+    </div>
+</ng-template>

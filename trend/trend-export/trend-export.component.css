@@ -1,0 +1,51 @@
+.pt-5.textbox-div.textbox-div-left
+{
+  padding-top:0px;
+  padding-bottom: 2px;
+  padding-left:20px;
+}
+ 
+.options
+{
+  padding-left: 40px;
+  margin-top:5px;
+  padding-bottom:0px;
+  margin-bottom: 10px;
+ 
+}
+ 
+.options label {
+  display: flex;
+  font-size: 14px;
+}
+ 
+.options input[type="radio"] {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  width: 40px;
+  height: 15px
+}
+ 
+.form-check.form-check-inline
+{
+  padding-left :50px;
+  padding-bottom:5px;
+}
+ 
+.fileoption-spacing
+{
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.not-supported-label {
+  white-space: normal;
+  padding-top: 15px;
+  padding-left: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-wrap: wrap;
+  word-break: break-word;
+}

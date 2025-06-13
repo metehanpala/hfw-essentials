@@ -1,0 +1,179 @@
+.trend-div {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+}
+
+.delete-confirmation-modal {
+  margin: 15px 21px 30px 21px;
+  padding-left: 0px;
+  padding-right: 0px;
+
+  .modal-header {
+    border-bottom: 1px solid lightgray;
+    padding: 0px 0px 10px 0px;
+  }
+
+  .modal-body {
+    padding: 0px;
+    font-family: 'Siemens Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.42857;
+    color: rgb(45, 60, 75);
+
+    .delete-confirmation-text-container {
+      margin: 5px 0px 20px 30px;
+      display: inline-block;
+      min-width: 91%;
+
+      .delete-text {
+        margin-top: 34px;
+        vertical-align: middle;
+        display: inline-block;
+      }
+    }
+
+    .btn-common-css {
+      min-width: 90px;
+      max-width: 90px;
+      margin-left: 16px;
+    }
+
+    .delete {
+      font-size: 80px;
+      vertical-align: top;
+      opacity: 0.9;
+    }
+
+    .acct-cmd-bts {
+      display: flex;
+      justify-content: flex-end;
+      border-top: 1px solid rgb(194, 198, 207);
+    }
+  }
+}
+
+.si-trendviewer-style-popover.popover {
+  position: absolute;
+  border: 1px solid rgb(204, 204, 204);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+
+  >.arrow,
+  >.arrow::after {
+    display: block;
+  }
+}
+
+.ok-save-confirmation-modal {
+  margin: 15px 21px 20px;
+
+  .modal-header {
+    border-bottom: 1px solid lightgray;
+    padding: 0px 0px 10px 0px;
+  }
+
+  .modal-title {
+    font-weight: 500;
+  }
+
+  .modal-body {
+    padding: 0px;
+    font-family: 'Siemens Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.42857;
+    color: rgb(45, 60, 75);
+
+    .ok-confirmation-text-container {
+      margin: 5px 0px 20px 30px;
+      display: inline-block;
+      min-width: 91%;
+
+      .ok-text {
+        margin-top: 34px;
+        vertical-align: middle;
+        display: inline-block;
+      }
+    }
+
+    .btn-common-css {
+      min-width: 90px;
+      max-width: 90px;
+    }
+
+    .save-icon {
+      font-size: 80px;
+      vertical-align: top;
+      opacity: 0.9;
+    }
+
+    .ok-save-confirmation-footer {
+      border-top: 1px solid rgb(194, 198, 207);
+      padding: 21px 0px 10px 10px;
+      text-align: end;
+    }
+  }
+}
+
+.si-trendviewer-property-popup.popover {
+  position: absolute;
+  border: 1px solid rgb(204, 204, 204);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  bottom: unset !important;
+  right: unset !important;
+  top: 0px !important;
+  left: 0px !important;
+
+  >.arrow,
+  >.arrow::after {
+    display: block;
+  }
+}
+
+.style-arrow {
+  margin-top: -12px;
+}
+
+.property-tabset {
+
+  .nav-tabs>li.active>a,
+  .nav-tabs>li.active>a:focus {
+    padding-bottom: 9px;
+    padding-top: 9px;
+  }
+
+  .nav-tabs>li>a:focus {
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
+}
+
+.legend-container {
+  margin-top: 2px;
+}
+
+// .export-model-trend {
+//   .modal-header {
+//     margin-left: 20px;
+//     margin-right: 20px;
+//     padding: 0px 0px 10px 0px;
+//   }
+
+//   .modal-body-trend-settings {
+//     display: flex;
+//     flex-direction: column;
+//     min-height: unset;
+//     height: 386px;
+//     border-radius: 10%;
+//     padding: 21px;
+//     font-family: 'Siemens Sans', sans-serif;
+//     font-size: 14px;
+//   }
+
+//   .model-footer {
+//     padding-top: 10px
+//   }
+// }

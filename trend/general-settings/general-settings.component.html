@@ -1,0 +1,64 @@
+<form class="form-horizontal">
+  <div class="modal-padding" style="height: 90px;">
+    <label for="number"
+      class="col-sm-2 control-label-timerange text">{{'TREND_FOLDER.DATA_ACCURACY'| translate }}</label>
+    <div class="form-group">
+
+      <div class="col-md-12 slider-margin">
+        <si-slider [(value)]="slidingValue" [min]="1" [max]="4" [step]="1" (valueChange)="logEvent($event)" />
+      </div>
+      <div class="slider-label">
+        <label class="col-sm-2 control-label">{{'TREND_FOLDER.LOADING_FAST'| translate }}</label>
+        <label class="col-sm-10 control-label-right">{{'TREND_FOLDER.HIGH_RESOLUTION'| translate }}</label>
+      </div>
+    </div>
+  </div>
+</form>
+<div class="control-divider"></div>
+<div class="panel">
+  <div class="panel-body panel-body-axis card-body card-body-axis">
+    <div class="pt-5 textbox-div textbox-div-left">
+      <span class="label">
+        {{ 'TREND_FOLDER.DEFAULT_TIME_PERIOD'| translate }}
+      </span>
+      <div>
+        <div class="col-md-12 modal-padding" style="display: flex">
+          <div class="col-md-5 timerange-element" [class.has-error]="isInvalidTimerange">
+            <input type="number" min="1" [(ngModel)]="selectedItem.unitValue"
+              [attr.disabled]="(selectedItem.id === 'all' || selectedItem.id === 'select') ? true : null "
+              (keypress)="validateNumber($event)" onPaste="return false"
+              class="col-md-12 timerange-input form-control" value="selectedItem.unitValue" />
+          </div>
+          <div class="col-md-8 timerange" [class.has-error]="isInvalidTimerange">
+            <select class="col-md-12 timerange-dropdown form-control" [(ngModel)]='selectedItem.id'
+              >
+              <option *ngFor="let timerangeItem of timeRangeConfig.timeRangeItems;"
+                [selected]="selectedItem.id === timerangeItem.id" [ngValue]="timerangeItem.id">
+                {{timerangeItem.displayName | translate}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pt-5 textbox-div textbox-div-right">
+      <span class="label text" id="indication-label">
+        {{ 'TREND_VIEWER.TEXT_SHORT.DATA_QUALITY_INDICATION'| translate }}
+      </span>
+      <div class="indication-show-toggle form-switch">
+        <input
+              id="switch"
+              type="checkbox"
+              class="form-check-input col-sm-2 col-xs-2 show"
+              role="switch"
+              [checked]="displayQualityInformation"
+              (change)="selectionChanged($event?.target?.checked)"
+          >
+          <label class="col-sm-0 form-check-label control-label-default" for="switch-input">{{ 'TREND_VIEWER.TEXT_SHORT.SHOW_INDICATIONS_ENABLE'| translate }}</label>
+        <!-- <si-switch id="switch" [on]="displayQualityInformation" (toggle)="selectionChanged($event)"
+        ></si-switch>
+        <label class="control-label-default">{{ 'TREND_VIEWER.TEXT_SHORT.SHOW_INDICATIONS_ENABLE'| translate }}</label> -->
+      </div>
+    </div>
+  </div>
+</div>
