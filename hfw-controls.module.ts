@@ -20,10 +20,12 @@ import { PanelNavigationComponent } from './panel-navigation/panel-navigation.co
 import { SplitterComponent } from './splitter/splitter.component';
 import { TraceSettingsComponent } from './trace/trace-settings.component';
 import { TreeSelectorComponent } from './tree-selector/tree-selector.component';
+import { TilesViewModule } from './tiles-view/tiles-view.module';
 @NgModule({
   imports: [CommonModule, FormsModule, PlatformModule, RouterModule,
     SiLoadingSpinnerModule, SiPasswordStrengthModule, SiPromptDialogButtonsModule, SiSearchBarModule,
-    BsDropdownModule.forRoot(), ModalModule.forRoot(), AccordionModule.forRoot(), SiTreeViewModule, TranslateModule],
+    BsDropdownModule.forRoot(), ModalModule.forRoot(), AccordionModule.forRoot(), SiTreeViewModule,
+    TranslateModule, TilesViewModule],
   providers: [
     { provide: HFW_TRANSLATION_FILE_TOKEN, useValue: './@gms-flex/controls/i18n/', multi: true }
   ],
@@ -50,6 +52,7 @@ import { TreeSelectorComponent } from './tree-selector/tree-selector.component';
     TimeoutDialogComponent,
     TraceSettingsComponent,
     TreeSelectorComponent,
-    UnsavedDialogComponent]
+    UnsavedDialogComponent,
+    TilesViewModule]
 })
 export class HfwControlsModule {}

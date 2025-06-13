@@ -1,8 +1,10 @@
 import { HttpClient, HttpHandler } from '@angular/common/http';
-import { SimpleChange } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { AppSettingsService, MockAppSettingsService, TraceService } from '@gms-flex/services-common';
+import { SimpleChange } from '@angular/core';
+import { animationFrameScheduler } from 'rxjs';
 import { SiLoadingSpinnerModule } from '@simpl/element-ng';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { AppSettingsService, MockAppSettingsService, TraceService } from '@gms-flex/services-common';
 
 import { HeaderTemplateDirective } from '../templates/header-template.directive';
 import { ItemTemplateDirective } from '../templates/item-template.directive';
@@ -21,19 +23,19 @@ describe('TilesViewComponent', () => {
   let component: TilesViewComponent;
   let fixture: ComponentFixture<TilesViewComponent>;
   const traceServiceStub: any = {
-    info: (arg1: any, string2: any) => ({}),
-    debug: (arg1: any, string2: any, systemNumber3: any) => ({})
+    info: () => ({}),
+    debug: () => ({})
   };
-  const simpleChangesStub: any = new SimpleChange(1, 2, true);
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         TEMPLATE_DIRECTIVES,
-        TilesViewComponent],
+        TilesViewComponent
+      ],
       imports: [
-        // CommonModule,
-        SiLoadingSpinnerModule
+        SiLoadingSpinnerModule,
+        ScrollingModule
       ],
       providers: [HttpClient, HttpHandler, { provide: TraceService, useValue: traceServiceStub },
         { provide: AppSettingsService, useClass: MockAppSettingsService },
@@ -52,84 +54,160 @@ describe('TilesViewComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // it('call init method', () => {
-  //   component.init(0);
-  //   expect(component.totalHeight).toEqual(0);
-  // });
-
-  it(`className has default value`, () => {
-    expect(component.className).toEqual(true);
+  it('default values are set', () => {
+    expect(component.className).toBeTrue();
+    expect(component.isVirtual).toBeFalse();
+    expect(component.loading).toBeFalse();
+    // default tile width from large config
+    expect(component.tilesSettings.tileWidth).toBe(320);
   });
 
-  it(`isVirtual has default value`, () => {
-    expect(component.isVirtual).toEqual(false);
+  it('applies tileSize changes', () => {
+    component.tileSize = 's';
+    expect(component.tilesSettings.tileWidth).toBe(240);
+    expect(component.rowHeight).toBe(component.tilesSettings.tileHeight + 2 * component.tilesSettings.topBottomMargin);
   });
 
-  it(`loading has default value`, () => {
-    expect(component.loading).toEqual(false);
+  it('ignores invalid tileSize', () => {
+    component.tileSize = 'x' as any;
+    expect(component.tilesSettings.tileWidth).toBe(320);
+    expect(component.rowHeight).toBe(216);
   });
 
-  it(`pageSize has default value`, () => {
-    expect(component.pageSize).toEqual(20);
+  it('items getter returns correct values', () => {
+    component.data = [1, 2, 3];
+    expect(component.items.length).toBe(3);
+    component.data = { data: [1], total: 1 };
+    expect(component.items.length).toBe(1);
   });
 
-  it(`skip has default value`, () => {
-    expect(component.skip).toEqual(0);
+  it('calculateRows builds rows according to container width', () => {
+    component.container = { nativeElement: { clientWidth: 960 } } as any;
+    component.data = [1,2,3,4,5,6,7,8,9,10];
+    component.tileSize = 's';
+    expect(component.itemsPerRow).toBe(3);
+    expect(component.rows.length).toBe(4);
+    expect(component.rows[0].length).toBe(3);
+    expect(component.rows[3].length).toBe(1);
   });
 
-  it(`placeHolders has default value`, () => {
-    expect(component.placeHolders).toEqual([]);
+  it('ngOnChanges recalculates rows when data changes', () => {
+    const spy = spyOn(component, 'calculateRows');
+    component.ngOnChanges({ data: new SimpleChange([], [1], false) });
+    expect(spy).toHaveBeenCalled();
   });
 
-  it('call tileSize property', () => {
-    component.tileSize = 'm';
-    expect(component.tilesSettings.tileWidth).toEqual(280);
+  it('onResize triggers calculation', () => {
+    const spy = spyOn(component, 'calculateRows');
+    component.onResize();
+    expect(spy).toHaveBeenCalled();
   });
 
-  it('call tileSize property with empty value', () => {
-    component.tileSize = '';
-    expect(component.tilesSettings.tileWidth).toEqual(320);
+  it('trackByIndex returns the index', () => {
+    expect(component.trackByIndex(5)).toBe(5);
   });
 
-  it('call total property', () => {
-    expect(component.total).toEqual(0);
+  it('getScrollTop returns container scroll when not virtual', () => {
+    component.container = { nativeElement: { scrollTop: 42 } } as any;
+    component.isVirtual = false;
+    expect(component.getScrollTop()).toBe(42);
   });
 
-  it('call items property', () => {
-    expect(component.items.length).toEqual(0);
-  });
-
-  it('call calculatePlaceholders method', () => {
-    component.calculatePlaceholders();
-    expect(component.placeHolders.length).toEqual(0);
-  });
-
-  it('call calculatePlaceholders method with initiale value', () => {
-    component.itemsPerRow = 5;
-    component.skip = 2;
-    component.calculatePlaceholders();
-    expect(component.placeHolders.length).toEqual(2);
-  });
-
-  it('call notPendingPageChangeForResize method', () => {
-    component.notPendingPageChangeForResize();
-    expect(component.total).toEqual(0);
-  });
-
-  it('call getScrollTop method', () => {
-    expect(component.getScrollTop()).toEqual(0);
-  });
-
-  it('call isChangedTileSizeOrSkip method', () => {
+  it('getScrollTop returns viewport scroll when virtual', () => {
     component.isVirtual = true;
-    component.isChangedTileSizeOrSkip(simpleChangesStub);
-    expect(component.container.nativeElement.scrollTop).toEqual(0);
+    component.viewport = { measureScrollOffset: () => 99 } as any;
+    expect(component.getScrollTop()).toBe(99);
   });
 
-  it('call ngOnChanges method', () => {
+  it('scrollTo uses viewport when virtual', () => {
+    const spy = jasmine.createSpy('scrollTo');
     component.isVirtual = true;
-    component.ngOnChanges(simpleChangesStub);
-    expect(component.container.nativeElement.scrollTop).toEqual(0);
+    component.viewport = { scrollToOffset: spy } as any;
+    component.scrollTo(120);
+    expect(spy).toHaveBeenCalledWith(120);
   });
 
+  it('scrollTo uses container when not virtual', () => {
+    const el = { scrollTop: 0 };
+    component.isVirtual = false;
+    component.container = { nativeElement: el } as any;
+    component.scrollTo(55);
+    expect(el.scrollTop).toBe(55);
+  });
+
+  it('onBeforeAttach restores container scroll and recalculates rows', () => {
+    const el = { scrollTop: 40 };
+    component.isVirtual = false;
+    component.container = { nativeElement: el } as any;
+    const calcSpy = spyOn(component, 'calculateRows');
+    spyOn(animationFrameScheduler, 'schedule').and.callFake((cb: any) => cb());
+    component.onBeforeAttach();
+    expect(calcSpy).toHaveBeenCalled();
+    expect(el.scrollTop).toBe(40);
+  });
+
+  it('onBeforeAttach restores viewport scroll when virtual', () => {
+    const scrollSpy = jasmine.createSpy('scrollToOffset');
+    const checkSpy = jasmine.createSpy('checkViewportSize');
+    component.isVirtual = true;
+    component.viewport = {
+      measureScrollOffset: () => 75,
+      scrollToOffset: scrollSpy,
+      checkViewportSize: checkSpy
+    } as any;
+    const calcSpy = spyOn(component, 'calculateRows');
+    spyOn(animationFrameScheduler, 'schedule').and.callFake((cb: any) => cb());
+    component.onBeforeAttach();
+    expect(scrollSpy).toHaveBeenCalledWith(75);
+    expect(checkSpy).toHaveBeenCalled();
+    expect(calcSpy).toHaveBeenCalled();
+  });
+
+  it('renders virtual scroll viewport when enabled', () => {
+    component.isVirtual = true;
+    component.data = [1, 2, 3];
+    component.container = { nativeElement: { clientWidth: 500 } } as any;
+    component.calculateRows();
+    fixture.detectChanges();
+    const viewport = fixture.nativeElement.querySelector('cdk-virtual-scroll-viewport');
+    expect(viewport).not.toBeNull();
+    expect(fixture.nativeElement.querySelectorAll('.hfw-tile-row').length).toBeGreaterThan(0);
+  });
+
+  it('does not render virtual scroll viewport when disabled', () => {
+    component.isVirtual = false;
+    fixture.detectChanges();
+    const viewport = fixture.nativeElement.querySelector('cdk-virtual-scroll-viewport');
+    expect(viewport).toBeNull();
+  });
+
+  it('calculateRows checks viewport size when virtual', () => {
+    const checkSpy = jasmine.createSpy('checkViewportSize');
+    component.isVirtual = true;
+    component.viewport = { checkViewportSize: checkSpy } as any;
+    component.container = { nativeElement: { clientWidth: 500 } } as any;
+    component.data = [1, 2, 3];
+    spyOn(animationFrameScheduler, 'schedule').and.callFake((cb: any) => cb());
+    component.calculateRows();
+    expect(checkSpy).toHaveBeenCalled();
+  });
+
+  it('initializes ResizeObserver in ngAfterViewInit', () => {
+    let callback: () => void;
+    const observeSpy = jasmine.createSpy('observe');
+    const MockResizeObserver = class {
+      constructor(cb: () => void) { callback = cb; }
+      observe = observeSpy;
+      disconnect() {}
+    };
+    (window as any).ResizeObserver = MockResizeObserver as any;
+    fixture = TestBed.createComponent(TilesViewComponent);
+    component = fixture.componentInstance;
+    const calcSpy = spyOn(component, 'calculateRows');
+    fixture.detectChanges();
+    expect(observeSpy).toHaveBeenCalled();
+    callback!();
+    expect(calcSpy).toHaveBeenCalledTimes(2); // initial + observer callback
+    delete (window as any).ResizeObserver;
+  });
 });
