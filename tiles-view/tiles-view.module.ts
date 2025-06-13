@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { SiLoadingSpinnerModule } from '@simpl/element-ng';
 
 import { HeaderTemplateDirective } from './templates/header-template.directive';
@@ -28,7 +29,8 @@ const TEMPLATE_DIRECTIVES: any[] = [
   ],
   imports: [
     CommonModule,
-    SiLoadingSpinnerModule
+    SiLoadingSpinnerModule,
+    ScrollingModule
   ],
   providers: []
 })

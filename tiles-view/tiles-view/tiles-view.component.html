@@ -1,59 +1,70 @@
 <!-- header -->
-<div
-    *ngIf="headerTemplate"
-    class="ps-1"
->
-    <ng-template
-        [ngTemplateOutlet]="headerTemplate!.templateRef"
-    />
+<div *ngIf="headerTemplate" class="ps-1">
+  <ng-template [ngTemplateOutlet]="headerTemplate.templateRef" />
 </div>
 
 <!-- content -->
-  <div
-  class="hfw-tiles-content ml-4" role="presentation" tabindex="-1"
+<div
+  class="hfw-tiles-content ml-4"
+  role="presentation"
+  tabindex="-1"
   [class.hfw-tiles-loading]="loading"
   #container
-  >
-      <div class="hfw-tiles-view-wrap" role="presentation">
-        <div
-          #table
-          class="tile-view-middle-segment"
-        >
-          <!--offset empty placeholder-->
-          <div *ngFor="let dataItem of placeHolders; trackBy: trackByIndex"
-          [style.width.px]="tilesSettings.tileWidth"
-          [style.height.px]="tilesSettings.tileHeight"
-          [style.margin]="tilesSettings.topBottomMargin + 'px ' + tilesSettings.leftRightMargin*2 + 'px ' + tilesSettings.topBottomMargin + 'px ' + 0 + 'px'">
-          </div>
-          <!--loaded tiles items -->
-          <div
-              *ngFor="let dataItem of items; let index = index; let first = first; let last = last; trackBy: trackByIndex"
-              class="hfw-tilesview-item ps-1"
-              [style.width.px]="tilesSettings.tileWidth"
-              [style.height.px]="tilesSettings.tileHeight"
-              [style.margin]="tilesSettings.topBottomMargin + 'px ' + tilesSettings.leftRightMargin*2 + 'px ' + tilesSettings.topBottomMargin + 'px ' + 0 + 'px'">
-            <ng-template
-                [templateContext]="{
-                    templateRef: itemTemplate?.templateRef,
-                    $implicit: dataItem,
-                    dataItem: dataItem,
-                    index: index,
-                    isFirst: first,
-                    isLast: last
-                }"
-            />
-          </div>
-        </div>
+>
+  <cdk-virtual-scroll-viewport *ngIf="isVirtual" [itemSize]="rowHeight" class="hfw-tiles-view-wrap">
+    <div
+      class="hfw-tile-row"
+      *cdkVirtualFor="let row of rows; let rowIndex = index; trackBy: trackByIndex"
+      [style.height.px]="rowHeight"
+    >
+      <div
+        *ngFor="let dataItem of row; let colIndex = index; trackBy: trackByIndex"
+        class="hfw-tilesview-item ps-1"
+        [style.width.px]="tilesSettings.tileWidth"
+        [style.height.px]="tilesSettings.tileHeight"
+        [style.margin]="tilesSettings.topBottomMargin + 'px ' + tilesSettings.leftRightMargin*2 + 'px ' + tilesSettings.topBottomMargin + 'px 0px'"
+      >
+        <ng-template
+          [templateContext]="{
+            templateRef: itemTemplate?.templateRef,
+            $implicit: dataItem,
+            dataItem: dataItem,
+            index: rowIndex * itemsPerRow + colIndex,
+            isFirst: false,
+            isLast: false
+          }"
+        ></ng-template>
       </div>
-      <div role="presentation">
-        <div [style.height.px]="totalHeight"></div>
-      </div>
-
-      <!-- loading indicator -->
-      <div *ngIf="loading" class="progress-container">
-        <div class="progress-inner">
-            <si-loading-spinner />
-        </div>
     </div>
+  </cdk-virtual-scroll-viewport>
 
+  <div *ngIf="!isVirtual" class="hfw-tiles-view-wrap">
+    <div class="tile-view-middle-segment">
+      <div
+        *ngFor="let dataItem of items; let index = index; trackBy: trackByIndex"
+        class="hfw-tilesview-item ps-1"
+        [style.width.px]="tilesSettings.tileWidth"
+        [style.height.px]="tilesSettings.tileHeight"
+        [style.margin]="tilesSettings.topBottomMargin + 'px ' + tilesSettings.leftRightMargin*2 + 'px ' + tilesSettings.topBottomMargin + 'px 0px'"
+      >
+        <ng-template
+          [templateContext]="{
+            templateRef: itemTemplate?.templateRef,
+            $implicit: dataItem,
+            dataItem: dataItem,
+            index: index,
+            isFirst: false,
+            isLast: false
+          }"
+        ></ng-template>
+      </div>
+    </div>
   </div>
+
+  <!-- loading indicator -->
+  <div *ngIf="loading" class="progress-container">
+    <div class="progress-inner">
+      <si-loading-spinner />
+    </div>
+  </div>
+</div>
