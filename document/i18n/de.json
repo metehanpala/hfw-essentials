@@ -1,0 +1,7 @@
+{
+  "ERROR_MESSAGES": {
+    "SEARCH_PROHIBITED_CHARACTER_EXISTS": "Suchzeichenfolge darf keines der folgenden Zeichen enthalten:"
+  },
+  "SEARCH-PLACEHOLDER": "Suchen…",
+  "SNAPIN-TITLE": "Dokumente"
+}

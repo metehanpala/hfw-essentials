@@ -1,0 +1,7 @@
+{
+  "ERROR_MESSAGES": {
+    "SEARCH_PROHIBITED_CHARACTER_EXISTS": "Iskalni niz ne sme vsebovati nobenega od naslednjih znakov:"
+  },
+  "SEARCH-PLACEHOLDER": "Vnesite za iskanje ...",
+  "SNAPIN-TITLE": "Pregledovalnik dokumentov"
+}

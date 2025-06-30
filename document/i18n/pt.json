@@ -1,0 +1,7 @@
+{
+  "ERROR_MESSAGES": {
+    "SEARCH_PROHIBITED_CHARACTER_EXISTS": "A string de pesquisa não pode conter nenhum dos seguintes caracteres:"
+  },
+  "SEARCH-PLACEHOLDER": "Pesquisar…",
+  "SNAPIN-TITLE": "Documentos"
+}

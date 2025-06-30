@@ -1,0 +1,7 @@
+{
+  "ERROR_MESSAGES": {
+    "SEARCH_PROHIBITED_CHARACTER_EXISTS": "Vyhľadávací reťazec nesmie obsahovať žiadny z týchto znakov: "
+  },
+  "SEARCH-PLACEHOLDER": "Zadaj prehľadanie ...",
+  "SNAPIN-TITLE": "Prehliadač dokumentu"
+}

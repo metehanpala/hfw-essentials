@@ -1,0 +1,7 @@
+{
+  "SNAPIN-TITLE": "Document Viewer",
+  "ERROR_MESSAGES": {
+    "SEARCH_PROHIBITED_CHARACTER_EXISTS": "Search string cannot contain any of the following characters: "
+  },
+  "SEARCH-PLACEHOLDER": "Type to search..."
+}

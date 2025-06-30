@@ -1,0 +1,33 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../out-tsc/lib",
+    "declarationMap": true,
+    "declaration": true,
+    "inlineSources": true,
+    "types": ["node", "signalr"],
+    "lib": [
+      "dom",
+      "es2022"
+    ],
+    "paths": {
+      "@gms-flex/document-root-services": [
+        "dist/@gms-flex/document-root-services"
+      ],
+      "@gms-flex/snapin-common": [
+        "dist/@gms-flex/snapin-common"
+      ]
+    }
+
+  },
+  "angularCompilerOptions": {
+    "skipTemplateCodegen": true,
+    "strictMetadataEmit": true,
+    "enableResourceInlining": true,
+    "preserveSymlinks": true,
+    "compilationMode": "partial"
+  },
+  "exclude": [
+    "**/*.spec.ts"
+  ]
+}

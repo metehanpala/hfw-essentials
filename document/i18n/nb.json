@@ -1,0 +1,7 @@
+{
+  "ERROR_MESSAGES": {
+    "SEARCH_PROHIBITED_CHARACTER_EXISTS": "Søketeksten kan ikke inneholde noen av disse tegnene:"
+  },
+  "SEARCH-PLACEHOLDER": "Søker…",
+  "SNAPIN-TITLE": "Dokumentër"
+}

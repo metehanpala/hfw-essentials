@@ -1,0 +1,7 @@
+{
+  "ERROR_MESSAGES": {
+    "SEARCH_PROHIBITED_CHARACTER_EXISTS": "搜尋的字串無法包含下列文字:"
+  },
+  "SEARCH-PLACEHOLDER": "寫入搜索...",
+  "SNAPIN-TITLE": "文件瀏覽"
+}

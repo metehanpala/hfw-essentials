@@ -1,0 +1,7 @@
+{
+  "ERROR_MESSAGES": {
+    "SEARCH_PROHIBITED_CHARACTER_EXISTS": "Vyhledávací řetězec nemůže obsahovat žádný z následujících znaků:"
+  },
+  "SEARCH-PLACEHOLDER": "Zadejte pro hledání ...",
+  "SNAPIN-TITLE": "Prohlížeč dokumentů"
+}

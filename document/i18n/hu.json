@@ -1,0 +1,7 @@
+{
+  "ERROR_MESSAGES": {
+    "SEARCH_PROHIBITED_CHARACTER_EXISTS": "Keresési szöveg nem tartalmazhatja a következő karaktereket:"
+  },
+  "SEARCH-PLACEHOLDER": "Type to search...",
+  "SNAPIN-TITLE": "Dokument megjelenítő"
+}

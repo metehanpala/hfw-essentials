@@ -1,0 +1,7 @@
+{
+  "ERROR_MESSAGES": {
+    "SEARCH_PROHIBITED_CHARACTER_EXISTS": "검색 문자열에는 다음 문자를 포함할 수 없음:"
+  },
+  "SEARCH-PLACEHOLDER": "Type to search...",
+  "SNAPIN-TITLE": "문서 보기"
+}

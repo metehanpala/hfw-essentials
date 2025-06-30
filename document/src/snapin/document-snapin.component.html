@@ -1,0 +1,13 @@
+<div *ngIf="tileView; then tileview else docuview"></div>
+
+<ng-template #docuview>
+    <gms-document-viewer
+        [browserMsg]="message"
+        style="height: 100%"
+        id="viewer"
+    />
+</ng-template>
+
+<ng-template #tileview>
+    <gms-document-search-view #searchComponent [snapInId]="fullSnapInID" [selectedObject]="selectedObject" [fullId]="fullId" [placeholder]="labels['SEARCH-PLACEHOLDER']" />
+</ng-template>

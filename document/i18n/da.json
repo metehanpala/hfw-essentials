@@ -1,0 +1,7 @@
+{
+  "ERROR_MESSAGES": {
+    "SEARCH_PROHIBITED_CHARACTER_EXISTS": "Søgestreng kan ikke indeholde nogen af de følgende tegn:"
+  },
+  "SEARCH-PLACEHOLDER": "Søg…",
+  "SNAPIN-TITLE": "Dokumenter"
+}

@@ -1,0 +1,7 @@
+{
+  "ERROR_MESSAGES": {
+    "SEARCH_PROHIBITED_CHARACTER_EXISTS": "搜索字符串不能包含以下任何字符："
+  },
+  "SEARCH-PLACEHOLDER": "要搜索的类型...",
+  "SNAPIN-TITLE": "文档浏览器"
+}

@@ -1,0 +1,7 @@
+{
+  "ERROR_MESSAGES": {
+    "SEARCH_PROHIBITED_CHARACTER_EXISTS": "لا يمكن أن تتضمن سلسلة البحث أياً من الأحرف الآتية:"
+  },
+  "SEARCH-PLACEHOLDER": "اكتب لبدء البحث...",
+  "SNAPIN-TITLE": "عارض المستند"
+}

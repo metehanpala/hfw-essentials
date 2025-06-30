@@ -1,0 +1,7 @@
+{
+  "ERROR_MESSAGES": {
+    "SEARCH_PROHIBITED_CHARACTER_EXISTS": "Поле поиска не может содержать следующие символы: "
+  },
+  "SEARCH-PLACEHOLDER": "Введите для поиска...",
+  "SNAPIN-TITLE": "Просмотр документов"
+}

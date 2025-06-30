@@ -1,0 +1,7 @@
+{
+  "ERROR_MESSAGES": {
+    "SEARCH_PROHIBITED_CHARACTER_EXISTS": "Söksträngen får inte innehålla något av följande tecken:"
+  },
+  "SEARCH-PLACEHOLDER": "Sök…",
+  "SNAPIN-TITLE": "Dokument"
+}

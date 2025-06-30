@@ -1,0 +1,7 @@
+{
+  "ERROR_MESSAGES": {
+    "SEARCH_PROHIBITED_CHARACTER_EXISTS": "Wyszukiwany ciąg nie może zawierać żadnego z następujących znaków:"
+  },
+  "SEARCH-PLACEHOLDER": "Szukanie…",
+  "SNAPIN-TITLE": "Dokumenty"
+}

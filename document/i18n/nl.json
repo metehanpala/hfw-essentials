@@ -1,0 +1,7 @@
+{
+  "ERROR_MESSAGES": {
+    "SEARCH_PROHIBITED_CHARACTER_EXISTS": "Zoekstring mag geen van de volgende tekens bevatten:"
+  },
+  "SEARCH-PLACEHOLDER": "Zoeken…",
+  "SNAPIN-TITLE": "Document"
+}

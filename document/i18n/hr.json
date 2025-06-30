@@ -1,0 +1,7 @@
+{
+  "ERROR_MESSAGES": {
+    "SEARCH_PROHIBITED_CHARACTER_EXISTS": "Tražilica ne može sadržavati nijedan od sljedećih znakova:"
+  },
+  "SEARCH-PLACEHOLDER": "Type to search...",
+  "SNAPIN-TITLE": "Preglednik dokumenata"
+}

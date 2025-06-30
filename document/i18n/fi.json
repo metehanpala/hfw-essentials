@@ -1,0 +1,7 @@
+{
+  "ERROR_MESSAGES": {
+    "SEARCH_PROHIBITED_CHARACTER_EXISTS": "Hakumerkkijono ei voi sisältää mitään seuraavista merkeistä:"
+  },
+  "SEARCH-PLACEHOLDER": "Etsi…",
+  "SNAPIN-TITLE": "Dokumentit"
+}

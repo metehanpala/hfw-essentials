@@ -1,0 +1,7 @@
+{
+  "ERROR_MESSAGES": {
+    "SEARCH_PROHIBITED_CHARACTER_EXISTS": "La chaîne de recherche ne peut pas contenir les caractères suivants : "
+  },
+  "SEARCH-PLACEHOLDER": "Tapez pour rechercher...",
+  "SNAPIN-TITLE": "Visionneur de documents"
+}

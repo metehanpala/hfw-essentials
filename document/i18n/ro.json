@@ -1,0 +1,7 @@
+{
+  "ERROR_MESSAGES": {
+    "SEARCH_PROHIBITED_CHARACTER_EXISTS": "Șirul de căutare nu poate conține niciunul dintre următoarele caractere:"
+  },
+  "SEARCH-PLACEHOLDER": "Căutare…",
+  "SNAPIN-TITLE": "Documente"
+}
