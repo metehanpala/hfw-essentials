@@ -1,0 +1,17 @@
+<div
+  *ngIf="isFolder"
+  class="hfw-flex-container-column hfw-flex-item-grow rounded-2">
+  <gms-graphics-search-view class="d-flex snapin-container-overflow-auto"
+    [selectedObject]="_snapinArgs.SelectionObject"
+    [searchPlaceHolder]='searchPlaceHolder' />
+</div>
+<gms-graphics-common
+  *ngIf="!isFolder"
+  class="hfw-flex-container-column
+           hfw-flex-item-grow"
+  [snapinArgsSubject]='snapinArgsSubject'
+  [onBeforeAttachSubject]="graphicsSnapinService?.onBeforeAttachSubject"
+  [_hldlConfig]='_hldlConfig'
+  (selectionChangedEmitter)="onSelectionChanged($event)"
+  (navigationEmitter)="onNavigation($event)"
+  style="border: 0px;" />

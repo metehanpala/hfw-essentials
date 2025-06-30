@@ -1,0 +1,11 @@
+{
+  "FILTER_MENU": {
+    "DEPTHS": "Profundidades",
+    "DISCIPLINES": "Disciplinas",
+    "HIDE_ALL": "Ocultar todo",
+    "LAYERS": "Capas",
+    "SHOW_ALL": "Mostrar todo"
+  },
+  "SEARCH-PLACEHOLDER": "Buscar…",
+  "SNAPIN-TITLE": "Gráficos"
+}

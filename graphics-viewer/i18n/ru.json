@@ -1,0 +1,11 @@
+{
+  "FILTER_MENU": {
+    "DEPTHS": "Глубины",
+    "DISCIPLINES": "Типы систем",
+    "HIDE_ALL": "Скрыть все",
+    "LAYERS": "Слои",
+    "SHOW_ALL": "Показать все"
+  },
+  "SEARCH-PLACEHOLDER": "Введите для поиска...",
+  "SNAPIN-TITLE": "Просмотрщик графики"
+}

@@ -1,0 +1,22 @@
+<hfw-tiles-view
+[data]="view"
+tileSize="m"
+#graphicsTilesView>
+    <ng-template hfwTilesViewHeaderTemplate>
+        <div class="py-4">
+            <si-search-bar
+                #searchBar
+                class="w-100" [placeholder]="searchPlaceHolder"
+                (searchChange)="searchChange($event)" [debounceTime]="400" [showIcon]="true"
+                prohibitedCharacters="*?" />
+        </div>
+    </ng-template>
+    <ng-template hfwTilesItemTemplate let-dataItem="dataItem">
+        <gms-tile-body
+        class="hfw-flex-item-grow d-flex"
+        (clickBody)="onClickBody($event)"
+        [selectedObject]="selectedObject"
+        [cnsLabel]="cnsLabelObject"
+        [dataItem]="dataItem" />
+    </ng-template>
+</hfw-tiles-view>

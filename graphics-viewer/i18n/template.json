@@ -1,0 +1,11 @@
+{
+    "SNAPIN-TITLE": "Graphics Viewer",
+    "FILTER_MENU" : {
+        "DEPTHS":  "Depths",
+        "DISCIPLINES": "Disciplines",
+        "LAYERS":  "Layers",
+        "SHOW_ALL":  "Show All",
+        "HIDE_ALL":  "Hide All"
+    },
+    "SEARCH-PLACEHOLDER": "Type to search..."
+}

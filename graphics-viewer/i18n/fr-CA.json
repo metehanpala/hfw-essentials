@@ -1,0 +1,11 @@
+{
+  "FILTER_MENU": {
+    "DEPTHS": "Profondeurs",
+    "DISCIPLINES": "Disciplines",
+    "HIDE_ALL": "Masquer tout",
+    "LAYERS": "Couches",
+    "SHOW_ALL": "Afficher tout"
+  },
+  "SEARCH-PLACEHOLDER": "Tapez pour rechercher...",
+  "SNAPIN-TITLE": "Graphics Viewer"
+}

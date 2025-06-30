@@ -1,0 +1,11 @@
+{
+  "FILTER_MENU": {
+    "DEPTHS": "深度",
+    "DISCIPLINES": "規律",
+    "HIDE_ALL": "すべて非表示",
+    "LAYERS": "ﾚｲﾔｰ",
+    "SHOW_ALL": "すべて表示"
+  },
+  "SEARCH-PLACEHOLDER": "Type to search...",
+  "SNAPIN-TITLE": "ｸﾞﾗﾌｨｯｸ表示"
+}

@@ -1,0 +1,11 @@
+{
+  "FILTER_MENU": {
+    "DEPTHS": "深度",
+    "DISCIPLINES": "专业",
+    "HIDE_ALL": "隐藏全部",
+    "LAYERS": "图层",
+    "SHOW_ALL": "显示全部"
+  },
+  "SEARCH-PLACEHOLDER": "要搜索的类型...",
+  "SNAPIN-TITLE": "图形查看器"
+}

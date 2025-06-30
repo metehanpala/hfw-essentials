@@ -1,0 +1,11 @@
+{
+  "FILTER_MENU": {
+    "DEPTHS": "Syvyydet",
+    "DISCIPLINES": "Järjestelmätyypit",
+    "HIDE_ALL": "Piilota kaikki",
+    "LAYERS": "Tasot",
+    "SHOW_ALL": "Näytä kaikki"
+  },
+  "SEARCH-PLACEHOLDER": "Etsi…",
+  "SNAPIN-TITLE": "Kuvat"
+}

@@ -1,0 +1,11 @@
+{
+  "FILTER_MENU": {
+    "DEPTHS": "أعماق",
+    "DISCIPLINES": "التخصصات",
+    "HIDE_ALL": "إخفاء الجميع",
+    "LAYERS": "الطبقات",
+    "SHOW_ALL": "عرض الجميع"
+  },
+  "SEARCH-PLACEHOLDER": "اكتب لبدء البحث...",
+  "SNAPIN-TITLE": "عارض الرسومات"
+}

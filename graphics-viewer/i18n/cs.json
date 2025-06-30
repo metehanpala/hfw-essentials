@@ -1,0 +1,11 @@
+{
+  "FILTER_MENU": {
+    "DEPTHS": "Hloubky",
+    "DISCIPLINES": "Disciplíny",
+    "HIDE_ALL": "Schovat vše",
+    "LAYERS": "Vrstvy",
+    "SHOW_ALL": "Ukázat vše"
+  },
+  "SEARCH-PLACEHOLDER": "Zadejte pro hledání ...",
+  "SNAPIN-TITLE": "Grafický prohlížeč"
+}

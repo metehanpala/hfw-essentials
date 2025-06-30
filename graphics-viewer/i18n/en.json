@@ -1,0 +1,11 @@
+{
+  "FILTER_MENU": {
+    "DEPTHS": "Depths",
+    "DISCIPLINES": "Disciplines",
+    "HIDE_ALL": "Hide all",
+    "LAYERS": "Layers",
+    "SHOW_ALL": "Show all"
+  },
+  "SEARCH-PLACEHOLDER": "Search…",
+  "SNAPIN-TITLE": "Graphics"
+}

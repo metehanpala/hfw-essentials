@@ -1,0 +1,11 @@
+{
+  "FILTER_MENU": {
+    "DEPTHS": "景深",
+    "DISCIPLINES": "科目",
+    "HIDE_ALL": "隱藏全部",
+    "LAYERS": "圖層",
+    "SHOW_ALL": "顯示全部"
+  },
+  "SEARCH-PLACEHOLDER": "寫入搜索...",
+  "SNAPIN-TITLE": "畫面瀏覽"
+}
