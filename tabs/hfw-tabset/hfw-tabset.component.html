@@ -1,0 +1,30 @@
+<div class="tab-container-header" [ngClass]="{ 'is-scrollable': scrollable }" (siResizeObserver)="resize()" [resizeThrottle]="100">
+
+  <button type="button" *ngIf="scrollable" (mousedown)="scrollLeft()" class="tab-container-control" [disabled]="!xPos">
+    <i class="icon element-left-3"></i>
+  </button>
+  <div class="tab-container-buttonbar" #tabContainer>
+    <ul class="nav nav-tabs tab-container-buttonbar-list" #innerTabContainer>
+      <li *ngFor="let tab of tabs; trackBy: trackByIndex" [class.active]="tab.active" [ngClass]="tab.customClass !== null ? tab.customClass : [] " class="nav-item">
+        <div [class.active]="tab.active" (click)="selectTab(tab)" class="nav-link">
+
+          <span class="tab-container-button-title">
+            {{ (tab.heading)! | translate }}
+          </span>
+
+          <i *ngIf="tab.icon" class="icon {{ tab.icon }}"></i>
+
+          <span *ngIf="tab.badgeContent" class="badge badge-{{ tab.badgeColor }}">
+            {{ tab.badgeContent | translate }}
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <button type="button" *ngIf="scrollable" (mousedown)="scrollRight()" class="tab-container-control is-right"
+    [disabled]="rightArrowDisabled">
+    <i class="icon element-right-3"></i>
+  </button>
+</div>
+
+<ng-content />

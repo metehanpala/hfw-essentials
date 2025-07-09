@@ -1,0 +1,74 @@
+@use '@simpl/element-theme/src/styles/variables';
+
+:host {
+  display: block;
+  flex-direction: column; // in case it's used as flex
+}
+
+*:focus {
+  outline: 0;
+}
+
+.tab-container-button-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tab-container-header {
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  border-bottom: 1px solid variables.$element-ui-4;
+}
+
+.nav-tabs {
+  border: 0;
+}
+
+.tab-container-buttonbar {
+  flex: 1;
+  overflow: hidden;
+}
+
+.tab-container-buttonbar-list {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  transition: 250ms;
+}
+
+.tab-container-buttonbar-list-item {
+  flex: none;
+}
+
+.tab-container-button {
+  text-align: center;
+  font-size: 12px;
+  border: 0;
+  flex: none;
+  padding: 5px 10px;
+  height: 100%;
+}
+
+.tab-container-control {
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 0;
+  user-select: none;
+
+  i {
+    font-size: 30px;
+  }
+
+  &:hover {
+    color: variables.$element-logo-color;
+  }
+
+  &:disabled {
+    color: variables.$element-text-disabled;
+    cursor: default;
+  }
+}

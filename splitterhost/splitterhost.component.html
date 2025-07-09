@@ -1,0 +1,38 @@
+<hfw-splitter class="d-flex h-100"
+              [orientation]="(splitterConfig?.orientation)!"
+              [firstPaneSize]="firstChildSize!"
+              [secondPaneSize]="secondChildSize"
+              [hideSplitterBarWhenPaneCollapsed]='hideSplitterBarWhenPaneCollapsed'
+              [firstPaneClosed]='firstPaneClosed'
+              [secondPaneClosed]='secondPaneClosed'
+              [collapsingPane]="(splitterConfig?.collapsingPane)!"
+              [paneCollapsed]="paneProgammaticallyCollapsed"
+              [beResponsive]='false'
+              [isLocked]="isLayoutLocked"
+              [ngStyle]="{ 'flex-direction':splitterStyleDirection!}"
+              (splitterChange)="onSplitterChange($event)"
+              [hidePane1OnFullScreen]="firstChildHiddenOnFullScreen"
+              [hidePane2OnFullScreen]="secondChildHiddenOnFullScreen"  #hfwSplitter>
+   <!-- pane 1 -->
+    <hfw-pane pane1 *ngIf="isFirstChildAPane"
+              [paneId]='firstChildConfig'
+              [frameId]='frameId'
+              [ngClass]="{ 'hfw-hidden-fullscreen': firstChildHiddenOnFullScreen}" />
+    <hfw-splitterhost pane1 *ngIf="!isFirstChildAPane" class="hfw-flex-container-column hfw-flex-item-grow"
+              [splitterConfig]='firstChildConfig'
+              [frameId]='frameId'
+              [ngClass]="{ 'hfw-hidden-fullscreen': firstChildHiddenOnFullScreen}"
+              (splitterStateChanged)="onChildrenStateChanged($event,true)"
+              (hasFullScreenChanged)="onUpdateFullScreenClasses(true, $event)" #firstPane />
+    <!-- pane 2 -->
+    <hfw-pane pane2 *ngIf="isSecondChildAPane"
+              [paneId]='secondChildConfig'
+              [frameId]='frameId'
+              [ngClass]="{ 'hfw-hidden-fullscreen': secondChildHiddenOnFullScreen}" />
+    <hfw-splitterhost pane2 style="height: 100%;" *ngIf="!isSecondChildAPane"
+              [splitterConfig]='secondChildConfig'
+              [frameId]='frameId'
+              (splitterStateChanged)="onChildrenStateChanged($event,false)"
+              (hasFullScreenChanged)="onUpdateFullScreenClasses(false, $event)"  #secondPane />
+
+</hfw-splitter>
