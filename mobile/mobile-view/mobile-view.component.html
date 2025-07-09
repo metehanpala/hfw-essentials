@@ -1,0 +1,61 @@
+<!-- Footer bar displayed on the mobile view -->
+<div class="footer-bar" hfwMobileOnly>
+  <!-- Button to toggle system browser -->
+  <div class="system-browser-button" (click)="toggleSystemBrowser()">
+    <i class="icon element-object-path"></i>
+  </div>
+
+<!-- Page label displaying the selected snapin title If system-browser is not active selection -->
+<div class="page-label" *ngIf="!sysBrowActive" [ngClass]="{'not-clickable': snapinTabUnique}"
+  (click)="snapinTabUnique ? null : showActionSheet('snapinNavigate')">{{ selectedSnapInTitle }}
+  <i class="element-up-3" *ngIf="!snapinTabUnique"></i>
+</div>
+
+  <!-- Horizontal Ellipsis button to show the content actions both primary/secondary -->
+  <div class="ellipsis-container" *ngIf="!sysBrowActive">
+    <!-- Disable If there are no actions available for the selected node -->
+    <div class="ellipsis-button" (click)="hideContentActions ? null : showActionSheet('contentActions')"
+      [ngClass]="{'disable': hideContentActions}">
+      <i class="icon element-options"></i>
+    </div>
+  </div>
+</div>
+
+<!-- Container for the action sheet -->
+<div class="action-sheet-container" *ngIf="showSheet">
+  <!-- Action sheet displaying snapin tabs and content actions -->
+  <div class="action-sheet">
+    <!-- Section for snap-in tabs -->
+    <div class="actions" *ngIf="showSnapinNavigate">
+      <!-- Individual snap-in tab displayed using ngFor loop -->
+      <div class="action" *ngFor="let snapinTab of snapinTabs; trackBy: trackSnapinsByIndex"
+        (click)="snapinTab.active ? $event.stopPropagation() : snapinNavigateClick(snapinTab)">
+        <!-- Displaying the title of active snapin tab -->
+        <ng-container *ngIf="snapinTab.active; else inactiveTab">
+          <div class="action-header">
+            {{ snapinTab.title }}
+          </div>
+        </ng-container>
+
+        <!-- Displaying the title of inactive snapin tab -->
+        <ng-template #inactiveTab>
+          <div class="action-item">
+            {{ snapinTab.title }}
+          </div>
+        </ng-template>
+      </div>
+    </div>
+
+    <!-- Section for content actions -->
+    <div class="actions" *ngIf="showContentActions" (click)="contentActionClick()">
+      <!-- Individual content action displayed using ngFor loop -->
+      <si-menu-factory [items]="contentItem"/>
+    </div>
+
+    <!-- Cancel button to hide the action sheet -->
+    <div class="cancel" (click)="hideActionSheet()">Cancel</div>
+  </div>
+</div>
+
+<!-- Overlay displayed when the action sheet is visible -->
+<div class="overlay" *ngIf="showSheet"></div>

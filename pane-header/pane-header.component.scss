@@ -1,0 +1,89 @@
+@use '@simpl/element-theme/src/styles/variables';
+
+:host {
+    position: relative;
+}
+
+.header-container {
+    display: flex;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.pane-info-container {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    color: variables.$element-ui-2;
+    overflow: hidden;
+    min-width: 30px;
+}
+
+.node-info {
+    height: fit-content;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: unset;
+}
+
+.pane-tabs-container {
+    overflow: hidden;
+}
+
+.content-bar-container {
+    position: relative;
+    flex: 1;
+    padding-top: 4px;
+    min-width: 30px;
+}
+
+.header-icon {
+    font-size: 24px;
+    height: fit-content;
+}
+
+.hide-content {
+  display: none;
+}
+
+.centered {
+  justify-content: center;
+  padding-right: 15%;
+}
+
+.mobile-back-container {
+  position: relative;
+  padding-top: 4px;
+  min-width: 30px;
+}
+
+.system-back-button {
+  // Normal state color for icons
+  color: var(--default-icon-color);
+  font-size: 1.85rem;
+
+  // Hover state color for icons
+  &:hover {
+    color: var(--element-ui-0);
+  }
+
+  // Active (clicked) state color for icons
+  &:active {
+    color: var(--element-ui-0);
+  }
+
+}
+
+.system-back-button-disabled {
+  // Disabled state for the back navigation button in mobile-view
+  // since span doesn't have disabled state, additional class is needed.
+  font-size: 1.85rem;
+  color: var(--element-text-disabled);
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+
+

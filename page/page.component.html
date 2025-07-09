@@ -1,0 +1,4 @@
+  <ng-container *ngFor="let frame of frames;trackBy: trackByIndex">
+    <hfw-router-outlet *ngIf="frame?.docked === 1" outletName="{{frame?.outletName}}" (routeChanged)="onRouteChanged($event)" />
+  </ng-container>
+  <hfw-router-outlet outletName="main" (routeChanged)="onRouteChanged($event)" class="si-layout-fixed-height" />

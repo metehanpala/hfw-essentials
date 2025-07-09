@@ -1,0 +1,42 @@
+<hfw-pane-header id="{{paneConfig?.id}}"
+    *ngIf="(paneConfig?.primaryHeader || paneConfig?.hasTab)"
+    [ngClass]="{'hfw-no-padding': paneConfig?.hasTab,
+                'hfw-pane-header rounded-top': paneConfig?.hasTab,
+                'hfw-pane-header-no-tab': !paneConfig?.hasTab}"
+    class="mb-4 hfw-container-bottom-border hfw-default-border-color flex-container hfw-page-background-color"
+    [headerTitle]='(paneConfig?.headerTitle)!'
+    [closeButton]='(paneConfig?.closeButton)!'
+    [snapIns]="snapIns"
+    [hasTab]='(paneConfig?.hasTab)!'
+    [titleVisible]="(paneConfig?.titleVisible)!"
+    [paneTitleOrSnapinTitle]="(paneConfig?.paneTitleOrSnapinTitle)!"
+    [paneId]='(paneConfig?.id)!'
+    [frameId]='frameId'
+    [displayEmpty]="!(paneStore?.selectedSnapInIdValue)"
+    [displaySelectedObject]="(paneConfig?.displaySelectedObject)!"
+    />
+
+<div class="hfw-flex-container-column hfw-flex-item-grow" *ngIf="paneStore?.selectedSnapInIdValue">
+    <hfw-router-outlet
+      outletName="{{paneConfig?.outletName}}"
+      (routeChanged)="onRouteChanged($event)"
+      (deactivate)="onDeactivated($event)"
+      class="hfw-flex-container-column hfw-flex-item-grow" />
+</div>
+
+<div *ngIf="paneStore?.selectedSnapInIdValue === null"
+    class="height-pane-full">
+    <si-empty-state
+    icon="element-technical-operator"
+    heading=" "
+    title="{{'HFW_CORE.EMPTY_PANE_TITLE' | translate }}" />
+</div>
+
+<!-- mobile navigation -->
+<div *ngIf="paneConfig?.mobileNavigation" class="hfw-container-top-border hfw-default-border-color">
+<hfw-pane-tab  [paneId]='(paneConfig?.id)!' [frameId]='frameId' [mobileNavigate]="true">
+    <ng-container *ngFor="let sni of snapIns; trackBy: trackByIndex">
+        <hfw-pane-tab-item *ngIf="sni.isTabVisible" [tabId]='(sni?.snapInId)!' [tabTitle]='sni?.tabTitle ? sni.tabTitle : sni.snapInId' />
+    </ng-container>
+</hfw-pane-tab>
+</div>

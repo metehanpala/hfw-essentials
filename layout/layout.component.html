@@ -1,0 +1,3 @@
+<hfw-pane class="hfw-flex-container-column hfw-flex-item-grow" *ngIf="layoutConfig?.paneInstance !== null && layoutConfig?.paneInstance !== undefined" [paneId]='(layoutConfig?.paneInstance?.id)!' [frameId]='frameId' />
+<hfw-splitterhost class="flex-grow-1" style="min-width: 0;" *ngIf="layoutConfig?.splitter !== null && layoutConfig?.splitter !== undefined" [splitterConfig]='(layoutConfig.splitter)!' [frameId]='frameId' />
+

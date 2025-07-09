@@ -1,0 +1,14 @@
+<hfw-pane-header
+    *ngIf="paneConfig?.primaryHeader || paneConfig?.hasTab"
+    [ngClass]="{'hfw-no-padding': paneConfig?.hasTab,
+                'hfw-pane-header': paneConfig?.hasTab,
+                'hfw-pane-header-no-tab': !paneConfig?.hasTab}"
+    class="hfw-container-bottom-border hfw-default-border-color"
+    [headerTitle]='paneConfig?.headerTitle'
+    [closeButton]='paneConfig?.closeButton'
+    [snapIns]="snapIns"
+    [hasTab]='paneConfig?.hasTab'
+    [titleVisible]="paneConfig?.titleVisible"
+    [paneTitleOrSnapinTitle]="paneConfig?.paneTitleOrSnapinTitle"
+    [paneId]='paneConfig?.id'
+    [frameId]='frameId' />

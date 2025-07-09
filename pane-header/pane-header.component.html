@@ -1,0 +1,79 @@
+<div class="mobile-back-container" hfwMobileOnly>
+  <span class="element-left-2 icon" [ngClass]="isLastNode ? 'system-back-button-disabled' : 'system-back-button'"
+    (click)="isLastNode ? null : systemBackNavigate()"></span>
+</div>
+
+<div class="header-container" siResponsiveContainer>
+  <div [ngClass]="{'pane-info-container': true, 'centered': isMobileView}">
+    <ng-container *ngIf="displaySelectedObject">
+      <span
+        class="header-icon ps-2 me-2 ms-2"
+        [ngClass]="selectedNodeIcon"
+      ></span>
+      <p class="node-info p-0 mb-0 mx-2">{{ selectedNodeInfo }}</p>
+    </ng-container>
+  </div>
+
+  <div class="pane-tabs-container" [ngClass]="{ 'hide-content': isMobileView }">
+    <!-- only pane title -->
+    <div
+      class="{{
+        closeButton === true ? 'col-xs-9' : 'hfw-pane-header-centralized'
+      }}"
+      *ngIf="titleVisible && paneTitleOrSnapinTitle === 0"
+    >
+      {{ headerTitle }}
+    </div>
+
+    <!-- only selected snapin title -->
+    <div
+      class="{{
+        closeButton === true ? 'col-xs-9' : 'hfw-pane-header-centralized'
+      }}"
+      *ngIf="titleVisible && paneTitleOrSnapinTitle === 1"
+    >
+      {{ selectedSnapInTitle }}
+    </div>
+
+    <!-- tabs -->
+    <div
+      *ngIf="hasTab && !paneStore?.paneConfig?.mobileNavigation"
+      class="flex-container hfw-no-padding"
+    >
+      <hfw-pane-tab
+        [paneId]="paneId"
+        [frameId]="frameId"
+        [mobileNavigate]="false"
+        [visibleTabsObs]="visibleTabsObs"
+      >
+        <hfw-pane-tab-item
+          *ngIf="displayEmpty"
+          tabId="empty"
+          [isEmptyTabItem]="true"
+          [active]="true"
+          tabTitle="{{ 'HFW_CORE.EMPTY_PANE_TAB' | translate }}"
+        />
+
+        <ng-container *ngIf="!displayEmpty">
+          <hfw-pane-tab-item
+            *ngFor="let sni of snapIns; trackBy: trackByIndex"
+            [hidden]="!sni?.isTabVisible"
+            [tabId]="(sni?.snapInId)!"
+            [tabTitle]="sni?.tabTitle ? sni.tabTitle : sni.snapInId"
+          />
+        </ng-container>
+      </hfw-pane-tab>
+    </div>
+  </div>
+
+  <div class="content-bar-container" [ngClass]="{ 'hide-content': isMobileView }">
+    <si-content-action-bar
+      style="float: right"
+      *ngIf="primaryItems.length > 0 || secondaryItems.length > 0"
+      [primaryActions]="primaryItems"
+      [secondaryActions]="secondaryItems"
+      viewType="expanded"
+    />
+  </div>
+
+</div>

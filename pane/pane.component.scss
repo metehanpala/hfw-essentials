@@ -1,0 +1,9 @@
+@use "@simpl/element-theme/src/styles/variables";
+
+.hfw-pane-header {
+    border-bottom: 3px solid variables.$element-ui-4;
+}
+
+.height-pane-full {
+  height: 100%;
+}
