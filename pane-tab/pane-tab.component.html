@@ -1,0 +1,28 @@
+<!-- <tabset *ngIf="!mobileNavigate" #tabset class="hfw-pane-tab" (mousedown)="tryToSwitch($event)"> -->
+  <!-- (deselect)="tab.active = false" -->
+   <!-- <tab *ngFor="let tab of tabs"
+       [active]="tab.active"
+       [customClass]="tab.customClass">
+       <ng-template tabHeading>
+        <div class="hfw-pane-tab-header">
+          {{tab.tabTitle}}
+        </div>
+      </ng-template>
+  </tab>
+</tabset> -->
+<!-- mobile navigation view -->
+<!-- <hfw-mobile-navset *ngIf="mobileNavigate" headerOnly="true">
+   <hfwMobileNav *ngFor="let tab of tabs"
+       [heading]="tab.tabTitle"
+       [active]="tab.tabId === selectedTabId"
+       (selectTab)="selectTab(tab)"
+       (deselect)="tab.active = false"
+       [customClass]="tab.customClass">
+  </hfwMobileNav>
+</hfw-mobile-navset> -->
+
+<si-tabset *ngIf="loaded" [selectedTabIndex]="selectedIndex" (mousedown)="tryToSwitch($event)" style="position: relative;" #tabset>
+  @for (tab of tabs; track tab) {
+    <si-tab heading="{{ tab.tabTitle }}" />
+  }
+</si-tabset>
